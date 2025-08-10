@@ -1,17 +1,34 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
+
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    id("com.android.application")
+    kotlin("multiplatform")
+    alias(libs.plugins.compose)
+    alias(libs.plugins.compose.compiler)
+}
+
+multiplatform {
+    androidMain {
+        implementation(libs.androidx.core.ktx)
+        implementation(libs.androidx.activity.compose)
+    }
+
+    commonMain {
+        implementation(compose.foundation)
+        implementation(compose.ui)
+        implementation(compose.runtime)
+    }
 }
 
 android {
     namespace = "br.alexandregpereira.offbalance"
-    compileSdk = 36
+    compileSdk = findProperty("compileSdk")?.toString()?.toInt()
 
     defaultConfig {
         applicationId = "br.alexandregpereira.offbalance"
-        minSdk = 24
-        targetSdk = 36
+        minSdk = findProperty("minSdk")?.toString()?.toInt()
+        targetSdk = findProperty("targetSdk")?.toString()?.toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -27,33 +44,25 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+    dependencies {
+        debugImplementation(compose.uiTooling)
     }
 }
 
-dependencies {
+kotlin {
+    androidTarget {
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        instrumentedTestVariant {
+            sourceSetTree.set(KotlinSourceSetTree.test)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+            dependencies {
+                implementation(libs.bundles.instrumentedtest)
+                debugImplementation(libs.android.test.compose.manifest)
+            }
+        }
+    }
 }
