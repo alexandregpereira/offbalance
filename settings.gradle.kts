@@ -7,5 +7,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Offbalance"
-include(":app")
+include(
+    ":app",
+    ":ui:foundation"
+)
  
