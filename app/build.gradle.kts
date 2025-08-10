@@ -18,6 +18,12 @@ multiplatform {
         implementation(compose.foundation)
         implementation(compose.ui)
         implementation(compose.runtime)
+        implementation(compose.components.resources)
+        implementation(compose.components.uiToolingPreview)
+    }
+
+    jvmMain {
+        implementation(compose.desktop.currentOs)
     }
 }
 
@@ -64,5 +70,13 @@ kotlin {
                 debugImplementation(libs.android.test.compose.manifest)
             }
         }
+    }
+}
+
+compose {
+    resources {
+        publicResClass = false
+        packageOfResClass = "br.alexandregpereira.offbalance.ui.resources"
+        generateResClass = always
     }
 }
