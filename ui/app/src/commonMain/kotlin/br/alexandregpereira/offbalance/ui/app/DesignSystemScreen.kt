@@ -231,6 +231,233 @@ fun DesignSystemScreen() {
                     }
                 }
                 
+                // Typography Section
+                OffbalanceCard(
+                    style = OffbalanceCardStyle.SECONDARY,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.md)
+                    ) {
+                        Text(
+                            text = "📝 Typography",
+                            style = MaterialTheme.typography.h2,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                        
+                        // Header styles
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "Financial Overview",
+                                style = MaterialTheme.typography.h1
+                            )
+                            Text(
+                                text = "H1 - Header Large (35.2px, Bold)",
+                                style = MaterialTheme.typography.caption
+                            )
+                        }
+                        
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "Account Balance",
+                                style = MaterialTheme.typography.h2
+                            )
+                            Text(
+                                text = "H2 - Header Medium (25.6px, SemiBold)",
+                                style = MaterialTheme.typography.caption
+                            )
+                        }
+                        
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "$12,847.50",
+                                style = MaterialTheme.typography.h3
+                            )
+                            Text(
+                                text = "H3 - Display Large (28px, Bold) - Main Balance",
+                                style = MaterialTheme.typography.caption
+                            )
+                        }
+                        
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "$13,200",
+                                style = MaterialTheme.typography.h4
+                            )
+                            Text(
+                                text = "H4 - Display Medium (18px, SemiBold) - Projections",
+                                style = MaterialTheme.typography.caption
+                            )
+                        }
+                        
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "Recent Balance Updates",
+                                style = MaterialTheme.typography.h5
+                            )
+                            Text(
+                                text = "H5 - Body Large (14px, SemiBold) - Section Titles",
+                                style = MaterialTheme.typography.caption
+                            )
+                        }
+                        
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "Main Checking",
+                                style = MaterialTheme.typography.h6
+                            )
+                            Text(
+                                text = "H6 - Body Medium (12px, SemiBold) - Item Titles",
+                                style = MaterialTheme.typography.caption
+                            )
+                        }
+                        
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "This is regular body text for paragraphs and content",
+                                style = MaterialTheme.typography.body2
+                            )
+                            Text(
+                                text = "Body2 - Standard body text (14px, Normal)",
+                                style = MaterialTheme.typography.caption
+                            )
+                        }
+                        
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "This Month",
+                                style = MaterialTheme.typography.body1
+                            )
+                            Text(
+                                text = "Body1 - Labels & metadata (11px, Normal)",
+                                style = MaterialTheme.typography.caption
+                            )
+                        }
+                        
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "2 hours ago",
+                                style = MaterialTheme.typography.caption
+                            )
+                            Text(
+                                text = "Caption - Timestamps (10px, Normal)",
+                                style = MaterialTheme.typography.caption.copy(
+                                    color = OffbalanceColors.TextMuted
+                                )
+                            )
+                        }
+                        
+                        // Specialized money styles
+                        Text(
+                            text = "💰 Money Typography",
+                            style = MaterialTheme.typography.h6,
+                            modifier = Modifier.padding(top = MaterialTheme.offbalance.spacing.lg)
+                        )
+                        
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "$12,847.50",
+                                style = OffbalanceTextStyles.MoneyLarge
+                            )
+                            Text(
+                                text = "Money Large - Main balances (28px, Bold, Monospace)",
+                                style = MaterialTheme.typography.caption
+                            )
+                        }
+                        
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "$1,234.56",
+                                style = OffbalanceTextStyles.MoneyMedium
+                            )
+                            Text(
+                                text = "Money Medium - Secondary amounts (18px, SemiBold, Monospace)",
+                                style = MaterialTheme.typography.caption
+                            )
+                        }
+                        
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                        ) {
+                            Text(
+                                text = "$123.45",
+                                style = OffbalanceTextStyles.MoneySmall
+                            )
+                            Text(
+                                text = "Money Small - List amounts (14px, SemiBold, Monospace)",
+                                style = MaterialTheme.typography.caption
+                            )
+                        }
+                        
+                        // Status text styles
+                        Text(
+                            text = "🎯 Status Typography",
+                            style = MaterialTheme.typography.h6,
+                            modifier = Modifier.padding(top = MaterialTheme.offbalance.spacing.lg)
+                        )
+                        
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.md)
+                        ) {
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    text = "+$250.00",
+                                    style = OffbalanceTextStyles.Success
+                                )
+                                Text(
+                                    text = "Success",
+                                    style = MaterialTheme.typography.caption
+                                )
+                            }
+                            
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    text = "-$89.99",
+                                    style = OffbalanceTextStyles.Error
+                                )
+                                Text(
+                                    text = "Error",
+                                    style = MaterialTheme.typography.caption
+                                )
+                            }
+                            
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    text = "Pending",
+                                    style = OffbalanceTextStyles.Warning
+                                )
+                                Text(
+                                    text = "Warning",
+                                    style = MaterialTheme.typography.caption
+                                )
+                            }
+                        }
+                    }
+                }
+                
                 // Glass Card Example
                 OffbalanceCard(
                     style = OffbalanceCardStyle.GLASS,
