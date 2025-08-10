@@ -2,12 +2,16 @@ package br.alexandregpereira.offbalance.ui.app
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -17,8 +21,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import br.alexandregpereira.offbalance.ui.components.BackgroundGradient
 import br.alexandregpereira.offbalance.ui.components.FinancialCard
 import br.alexandregpereira.offbalance.ui.components.MoneyTextField
@@ -453,6 +462,430 @@ fun DesignSystemScreen() {
                                     text = "Warning",
                                     style = OffbalanceTheme.typography.caption
                                 )
+                            }
+                        }
+                    }
+                }
+                
+                // Color Palette Section
+                OffbalanceCard(
+                    style = OffbalanceCardStyle.SECONDARY,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.lg)
+                    ) {
+                        OffbalanceText(
+                            text = "🎨 Color Palette",
+                            style = OffbalanceTheme.typography.h2,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                        
+                        // Primary Colors
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
+                        ) {
+                            OffbalanceText(
+                                text = "Primary Colors",
+                                style = OffbalanceTheme.typography.h6
+                            )
+                            
+                            // Primary gradient swatch
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(48.dp)
+                                        .clip(CircleShape)
+                                        .background(OffbalanceTheme.gradients.primary)
+                                        .border(2.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                )
+                                Column {
+                                    OffbalanceText(
+                                        text = "Primary Gradient",
+                                        style = OffbalanceTheme.typography.body2.copy(
+                                            color = OffbalanceTheme.colors.textPrimary
+                                        )
+                                    )
+                                    OffbalanceText(
+                                        text = "#4F46E5 → #7C3AED",
+                                        style = OffbalanceTheme.typography.caption
+                                    )
+                                }
+                            }
+                            
+                            // Primary solid color
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(48.dp)
+                                        .clip(CircleShape)
+                                        .background(OffbalanceTheme.colors.primary)
+                                        .border(2.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                )
+                                Column {
+                                    OffbalanceText(
+                                        text = "Primary",
+                                        style = OffbalanceTheme.typography.body2.copy(
+                                            color = OffbalanceTheme.colors.textPrimary
+                                        )
+                                    )
+                                    OffbalanceText(
+                                        text = "#6366F1",
+                                        style = OffbalanceTheme.typography.caption
+                                    )
+                                }
+                            }
+                        }
+                        
+                        // Background Colors
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
+                        ) {
+                            OffbalanceText(
+                                text = "Background Colors",
+                                style = OffbalanceTheme.typography.h6
+                            )
+                            
+                            // Background gradient
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(48.dp)
+                                        .clip(CircleShape)
+                                        .background(OffbalanceTheme.gradients.background)
+                                        .border(2.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                )
+                                Column {
+                                    OffbalanceText(
+                                        text = "Background Gradient",
+                                        style = OffbalanceTheme.typography.body2.copy(
+                                            color = OffbalanceTheme.colors.textPrimary
+                                        )
+                                    )
+                                    OffbalanceText(
+                                        text = "#1A1A2E → #0F3460",
+                                        style = OffbalanceTheme.typography.caption
+                                    )
+                                }
+                            }
+                            
+                            // Surface colors row
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
+                            ) {
+                                // Surface Dark
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(32.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.colors.surfaceDark)
+                                            .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "Surface Dark",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
+                                
+                                // Surface Medium
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(32.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.colors.surfaceMedium)
+                                            .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "Surface Medium",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
+                                
+                                // Surface Light
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(32.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.colors.surfaceLight)
+                                            .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "Surface Light",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
+                            }
+                        }
+                        
+                        // Text Colors
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
+                        ) {
+                            OffbalanceText(
+                                text = "Text Colors",
+                                style = OffbalanceTheme.typography.h6
+                            )
+                            
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
+                            ) {
+                                // Text Primary
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(32.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.colors.textPrimary)
+                                            .border(1.dp, Color.Black.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "Primary",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center,
+                                        color = OffbalanceTheme.colors.textPrimary
+                                    )
+                                }
+                                
+                                // Text Secondary
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(32.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.colors.textSecondary)
+                                            .border(1.dp, Color.Black.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "Secondary",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center,
+                                        color = OffbalanceTheme.colors.textSecondary
+                                    )
+                                }
+                                
+                                // Text Muted
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(32.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.colors.textMuted)
+                                            .border(1.dp, Color.Black.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "Muted",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center,
+                                        color = OffbalanceTheme.colors.textMuted
+                                    )
+                                }
+                                
+                                // Text White
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(32.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.colors.textWhite)
+                                            .border(1.dp, Color.Black.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "White",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center,
+                                        color = OffbalanceTheme.colors.textWhite
+                                    )
+                                }
+                            }
+                        }
+                        
+                        // Status Colors
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
+                        ) {
+                            OffbalanceText(
+                                text = "Status Colors",
+                                style = OffbalanceTheme.typography.h6
+                            )
+                            
+                            // Success colors
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(48.dp)
+                                        .clip(CircleShape)
+                                        .background(OffbalanceTheme.gradients.success)
+                                        .border(2.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                )
+                                Column {
+                                    OffbalanceText(
+                                        text = "Success Gradient",
+                                        style = OffbalanceTheme.typography.body2.copy(
+                                            color = OffbalanceTheme.colors.success
+                                        )
+                                    )
+                                    OffbalanceText(
+                                        text = "#059669 → #10B981",
+                                        style = OffbalanceTheme.typography.caption
+                                    )
+                                }
+                            }
+                            
+                            // Status colors row
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
+                            ) {
+                                // Success
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(32.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.colors.success)
+                                            .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "Success",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center,
+                                        color = OffbalanceTheme.colors.success
+                                    )
+                                }
+                                
+                                // Error
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(32.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.colors.error)
+                                            .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "Error",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center,
+                                        color = OffbalanceTheme.colors.error
+                                    )
+                                }
+                                
+                                // Warning
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(32.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.colors.warning)
+                                            .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "Warning",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center,
+                                        color = OffbalanceTheme.colors.warning
+                                    )
+                                }
+                            }
+                        }
+                        
+                        // Special Effects
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
+                        ) {
+                            OffbalanceText(
+                                text = "Special Effects",
+                                style = OffbalanceTheme.typography.h6
+                            )
+                            
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
+                            ) {
+                                // Glass effect
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(48.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.gradients.glass)
+                                            .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "Glass Effect",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
+                                
+                                // Overlay effect
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(48.dp)
+                                            .clip(CircleShape)
+                                            .background(OffbalanceTheme.gradients.overlay)
+                                            .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
+                                    )
+                                    OffbalanceText(
+                                        text = "Overlay",
+                                        style = OffbalanceTheme.typography.caption,
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
                             }
                         }
                     }
