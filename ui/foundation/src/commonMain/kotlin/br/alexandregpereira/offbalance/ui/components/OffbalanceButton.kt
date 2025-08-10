@@ -1,4 +1,4 @@
-package br.alexandregpereira.offbalance.ui.foundation.components
+package br.alexandregpereira.offbalance.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -8,16 +8,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ripple
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.semantics.Role
@@ -25,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceColors
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceGradients
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceSize
-import br.alexandregpereira.offbalance.ui.foundation.OffbalanceSpacing
 import br.alexandregpereira.offbalance.ui.foundation.offbalance
 
 // Button variants matching the design system

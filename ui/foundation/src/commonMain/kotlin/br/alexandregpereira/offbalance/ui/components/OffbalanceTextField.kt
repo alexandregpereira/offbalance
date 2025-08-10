@@ -1,4 +1,4 @@
-package br.alexandregpereira.offbalance.ui.foundation.components
+package br.alexandregpereira.offbalance.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -18,6 +18,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceColors
@@ -102,13 +104,13 @@ fun MoneyTextField(
         enabled = enabled,
         textStyle = MaterialTheme.typography.h4.copy(
             color = OffbalanceColors.TextPrimary,
-            fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace
+            fontFamily = FontFamily.Monospace
         ),
         placeholder = placeholder,
         isError = isError,
         singleLine = true,
         keyboardOptions = KeyboardOptions(
-            keyboardType = androidx.compose.ui.text.input.KeyboardType.Decimal
+            keyboardType = KeyboardType.Decimal
         ),
         interactionSource = interactionSource
     )

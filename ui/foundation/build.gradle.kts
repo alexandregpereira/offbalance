@@ -6,7 +6,7 @@ plugins {
 }
 
 androidLibrary {
-    namespace = "br.alexandregpereira.offbalance.ui.foundation"
+    namespace = "br.alexandregpereira.offbalance.ui"
 }
 
 multiplatform {

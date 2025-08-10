@@ -20,24 +20,25 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import br.alexandregpereira.offbalance.ui.components.BackgroundGradient
+import br.alexandregpereira.offbalance.ui.components.FinancialCard
+import br.alexandregpereira.offbalance.ui.components.MoneyTextField
+import br.alexandregpereira.offbalance.ui.components.OffbalanceButton
+import br.alexandregpereira.offbalance.ui.components.OffbalanceButtonStyle
+import br.alexandregpereira.offbalance.ui.components.OffbalanceCard
+import br.alexandregpereira.offbalance.ui.components.OffbalanceCardStyle
+import br.alexandregpereira.offbalance.ui.components.OffbalanceTextField
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceColors
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTextStyles
-import br.alexandregpereira.offbalance.ui.foundation.components.BackgroundGradient
-import br.alexandregpereira.offbalance.ui.foundation.components.FinancialCard
-import br.alexandregpereira.offbalance.ui.foundation.components.MoneyTextField
-import br.alexandregpereira.offbalance.ui.foundation.components.OffbalanceButton
-import br.alexandregpereira.offbalance.ui.foundation.components.OffbalanceButtonStyle
-import br.alexandregpereira.offbalance.ui.foundation.components.OffbalanceCard
-import br.alexandregpereira.offbalance.ui.foundation.components.OffbalanceCardStyle
-import br.alexandregpereira.offbalance.ui.foundation.components.OffbalanceTextField
 import br.alexandregpereira.offbalance.ui.foundation.offbalance
 
 @Composable
 fun DesignSystemScreen() {
     BackgroundGradient {
         Scaffold(
-            backgroundColor = androidx.compose.ui.graphics.Color.Transparent,
+            backgroundColor = Color.Transparent,
             contentColor = OffbalanceColors.TextPrimary
         ) { paddingValues ->
             Column(
