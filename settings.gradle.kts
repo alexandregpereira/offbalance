@@ -9,6 +9,7 @@ dependencyResolutionManagement {
 rootProject.name = "Offbalance"
 include(
     ":app",
-    ":ui:foundation"
+    ":ui:app",
+    ":ui:foundation",
 )
  

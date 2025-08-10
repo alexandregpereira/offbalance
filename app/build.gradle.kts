@@ -20,6 +20,7 @@ multiplatform {
         implementation(compose.runtime)
         implementation(compose.components.resources)
         implementation(compose.components.uiToolingPreview)
+        implementation(project(":ui:foundation"))
     }
 
     jvmMain {

@@ -6,19 +6,18 @@ plugins {
 }
 
 androidLibrary {
-    namespace = "br.alexandregpereira.offbalance.ui.foundation"
+    namespace = "br.alexandregpereira.offbalance.ui.app"
 }
 
 multiplatform {
     commonMain {
-        api(compose.ui)
-        api(compose.foundation)
+        implementation(project(":ui:foundation"))
         implementation(compose.material)
-        implementation(compose.materialIconsExtended)
-        implementation(compose.uiUtil)
     }
     androidMain {
         implementation(libs.android.compose.tooling.preview)
     }
-    jvmMain()
+    jvmMain {
+        implementation(compose.desktop.currentOs)
+    }
 }
