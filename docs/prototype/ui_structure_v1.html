@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial App - UI Structure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .navigation-overview {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .tab-nav {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-button:hover {
+            color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .app-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .nav-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .screen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .screen-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .screen-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .screen-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .screen-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .screen-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .screen-features {
+            list-style: none;
+        }
+
+        .screen-features li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .screen-features li:last-child {
+            border-bottom: none;
+        }
+
+        .screen-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .navigation-flow {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .flow-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .flow-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .flow-arrow {
+            color: #667eea;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .mobile-nav {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            border-radius: 25px;
+            padding: 15px;
+            box-shadow: 0 -2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #666;
+            font-size: 12px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-icon:hover, .nav-icon.active {
+            color: #667eea;
+        }
+
+        .nav-icon-symbol {
+            width: 28px;
+            height: 28px;
+            background: currentColor;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            opacity: 0.8;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .screen-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .flow-diagram {
+                flex-direction: column;
+            }
+            
+            .tab-nav {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💰 Financial App - UI Structure & Navigation</h1>
+
+        <div class="navigation-overview">
+            <div class="tab-nav">
+                <button class="tab-button active" onclick="showTab('main-screens')">Main Screens</button>
+                <button class="tab-button" onclick="showTab('forms-modals')">Forms & Modals</button>
+                <button class="tab-button" onclick="showTab('navigation')">Navigation Flow</button>
+            </div>
+
+            <!-- Main Screens Tab -->
+            <div class="tab-content active" id="main-screens">
+                <h2 class="section-title">📱 Main Application Screens</h2>
+                
+                <div class="screen-grid">
+                    <!-- Dashboard Screen -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">🏠</div>
+                            Dashboard (Home)
+                        </div>
+                        <div class="screen-description">
+                            Central overview of user's financial status with quick actions and key metrics.
+                        </div>
+                        <ul class="screen-features">
+                            <li>Total balance across all accounts</li>
+                            <li>Recent balance updates (last 5)</li>
+                            <li>Quick action buttons (Update Balance, Transfer Money)</li>
+                            <li>Current month projection</li>
+                            <li>Next month projection</li>
+                            <li>Upcoming recurring entries</li>
+                        </ul>
+                    </div>
+
+                    <!-- Accounts Screen -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">🏦</div>
+                            Accounts
+                        </div>
+                        <div class="screen-description">
+                            Manage all financial accounts with balance update functionality.
+                        </div>
+                        <ul class="screen-features">
+                            <li>List of all accounts (Bank, Cash, Credit Card, etc.)</li>
+                            <li>Current balance for each account</li>
+                            <li>Account type icons and colors</li>
+                            <li>Update balance button for each account</li>
+                            <li>Add new account button</li>
+                            <li>Edit/Delete account options</li>
+                            <li>Account balance history preview</li>
+                        </ul>
+                    </div>
+
+                    <!-- Balance History Screen -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">📊</div>
+                            Balance History
+                        </div>
+                        <div class="screen-description">
+                            Complete history of balance updates for each account.
+                        </div>
+                        <ul class="screen-features">
+                            <li>Chronological list of balance updates</li>
+                            <li>Filter by account and date range</li>
+                            <li>Balance change indicators (+/-)</li>
+                            <li>Date and time of each update</li>
+                            <li>Optional notes for each balance update</li>
+                            <li>Balance trend visualization</li>
+                        </ul>
+                    </div>
+
+                    <!-- Transfers Screen -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">↔️</div>
+                            Transfers
+                        </div>
+                        <div class="screen-description">
+                            Money transfers between accounts that don't affect total balance.
+                        </div>
+                        <ul class="screen-features">
+                            <li>List of all inter-account transfers</li>
+                            <li>From/To account visualization</li>
+                            <li>Transfer amount and date</li>
+                            <li>Transfer description/notes</li>
+                            <li>Create new transfer button</li>
+                            <li>Edit/Cancel transfer options</li>
+                        </ul>
+                    </div>
+
+                    <!-- Recurring Entries Screen -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">🔄</div>
+                            Recurring Entries
+                        </div>
+                        <div class="screen-description">
+                            Manage recurring income and expenses for accurate balance projections.
+                        </div>
+                        <ul class="screen-features">
+                            <li>List of all recurring entries</li>
+                            <li>Frequency indicators (Monthly, Weekly, etc.)</li>
+                            <li>Next occurrence dates</li>
+                            <li>Income/Expense type indicators</li>
+                            <li>Active/Inactive status toggle</li>
+                            <li>Edit recurring entry details</li>
+                            <li>Add new recurring entry</li>
+                        </ul>
+                    </div>
+
+                    <!-- Projections Screen -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">📈</div>
+                            Balance Projections
+                        </div>
+                        <div class="screen-description">
+                            Future balance projections based on current balances and recurring entries.
+                        </div>
+                        <ul class="screen-features">
+                            <li>Current month projected total balance</li>
+                            <li>Next month projected total balance</li>
+                            <li>Expected income/expense for the period</li>
+                            <li>Balance trend chart</li>
+                            <li>Account-by-account projections</li>
+                            <li>Warning indicators for potential negative balances</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forms & Modals Tab -->
+            <div class="tab-content" id="forms-modals">
+                <h2 class="section-title">📝 Forms & Modal Dialogs</h2>
+                
+                <div class="screen-grid">
+                    <!-- Update Balance Form -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">💰</div>
+                            Update Balance Form
+                        </div>
+                        <div class="screen-description">
+                            Form to update account balance - creates automatic balance history entry.
+                        </div>
+                        <ul class="screen-features">
+                            <li>Account selector (or pre-selected)</li>
+                            <li>New balance amount input</li>
+                            <li>Optional notes/description field</li>
+                            <li>Date picker (default: today)</li>
+                            <li>Shows current balance for reference</li>
+                            <li>Shows calculated change (+/-)</li>
+                            <li>Update/Cancel buttons</li>
+                        </ul>
+                    </div>
+
+                    <!-- Create Account Form -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">🏦</div>
+                            Create Account Form
+                        </div>
+                        <div class="screen-description">
+                            Form to add new financial accounts to the system.
+                        </div>
+                        <ul class="screen-features">
+                            <li>Account name input</li>
+                            <li>Account type selector</li>
+                            <li>Initial balance input</li>
+                            <li>Account color/icon picker</li>
+                            <li>Description field</li>
+                            <li>Create/Cancel buttons</li>
+                        </ul>
+                    </div>
+
+                    <!-- Transfer Money Form -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">↔️</div>
+                            Transfer Money Form
+                        </div>
+                        <div class="screen-description">
+                            Interface for transferring money between user accounts.
+                        </div>
+                        <ul class="screen-features">
+                            <li>From account selector</li>
+                            <li>To account selector</li>
+                            <li>Transfer amount input</li>
+                            <li>Transfer description</li>
+                            <li>Date selector</li>
+                            <li>Shows current balances</li>
+                            <li>Transfer/Cancel buttons</li>
+                        </ul>
+                    </div>
+
+                    <!-- Recurring Entry Form -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">🔄</div>
+                            Recurring Entry Form
+                        </div>
+                        <div class="screen-description">
+                            Setup form for periodic income and expense entries for projections.
+                        </div>
+                        <ul class="screen-features">
+                            <li>Entry name/description</li>
+                            <li>Account selector</li>
+                            <li>Amount input</li>
+                            <li>Type (Income/Expense)</li>
+                            <li>Frequency selector (Monthly, Weekly, etc.)</li>
+                            <li>Start date picker</li>
+                            <li>End date (optional)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Edit/Delete Confirmation -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">⚠️</div>
+                            Confirmation Dialogs
+                        </div>
+                        <div class="screen-description">
+                            Modal dialogs for confirming important actions.
+                        </div>
+                        <ul class="screen-features">
+                            <li>Delete balance history entry</li>
+                            <li>Delete account confirmation</li>
+                            <li>Cancel recurring entry dialog</li>
+                            <li>Clear balance history confirmation</li>
+                            <li>Reset account balance confirmation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Settings Screen -->
+                    <div class="screen-card">
+                        <div class="screen-title">
+                            <div class="screen-icon">⚙️</div>
+                            Settings
+                        </div>
+                        <div class="screen-description">
+                            App configuration and preferences management.
+                        </div>
+                        <ul class="screen-features">
+                            <li>Currency selection</li>
+                            <li>Date format preferences</li>
+                            <li>App theme selection</li>
+                            <li>Data export/import options</li>
+                            <li>Backup/restore functionality</li>
+                            <li>Reset app data option</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Flow Tab -->
+            <div class="tab-content" id="navigation">
+                <h2 class="section-title">🗺️ Navigation Flow & Structure</h2>
+                
+                <div class="navigation-flow">
+                    <h3>Primary Navigation Flow</h3>
+                    <div class="flow-diagram">
+                        <div class="flow-box">Dashboard</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-box">Accounts</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-box">Balance History</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-box">Projections</div>
+                    </div>
+                    
+                    <h3>Secondary Actions Flow</h3>
+                    <div class="flow-diagram">
+                        <div class="flow-box">Update Balance</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-box">Transfer Money</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-box">Setup Recurring</div>
+                    </div>
+
+                    <h3>Mobile Bottom Navigation</h3>
+                    <div class="mobile-nav">
+                        <div class="bottom-nav">
+                            <a href="#" class="nav-icon active">
+                                <div class="nav-icon-symbol"></div>
+                                Home
+                            </a>
+                            <a href="#" class="nav-icon">
+                                <div class="nav-icon-symbol"></div>
+                                Accounts
+                            </a>
+                            <a href="#" class="nav-icon">
+                                <div class="nav-icon-symbol"></div>
+                                Update
+                            </a>
+                            <a href="#" class="nav-icon">
+                                <div class="nav-icon-symbol"></div>
+                                History
+                            </a>
+                            <a href="#" class="nav-icon">
+                                <div class="nav-icon-symbol"></div>
+                                Projects
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation-flow">
+                    <h3>🎯 Quick Actions (Available from Dashboard)</h3>
+                    <div class="app-navigation">
+                        <div class="nav-item">💰 Update Balance</div>
+                        <div class="nav-item">↔️ Transfer Money</div>
+                        <div class="nav-item">🏦 Add Account</div>
+                        <div class="nav-item">🔄 Setup Recurring</div>
+                        <div class="nav-item">📊 View History</div>
+                        <div class="nav-item">📈 View Projections</div>
+                    </div>
+
+                    <h3>📱 Screen Hierarchy</h3>
+                    <div style="background: #f8f9ff; padding: 20px; border-radius: 10px; font-family: monospace;">
+                        <div>📱 <strong>App Root</strong></div>
+                        <div style="margin-left: 20px;">├── 🏠 <strong>Dashboard</strong> (Default Screen)</div>
+                        <div style="margin-left: 20px;">├── 🏦 <strong>Accounts</strong></div>
+                        <div style="margin-left: 40px;">│   ├── ➕ Add Account</div>
+                        <div style="margin-left: 40px;">│   ├── ✏️ Edit Account</div>
+                        <div style="margin-left: 40px;">│   └── 💰 Update Balance</div>
+                        <div style="margin-left: 20px;">├── 📊 <strong>Balance History</strong></div>
+                        <div style="margin-left: 40px;">│   └── 📋 History Details</div>
+                        <div style="margin-left: 20px;">├── ↔️ <strong>Transfers</strong></div>
+                        <div style="margin-left: 40px;">│   └── ➕ New Transfer</div>
+                        <div style="margin-left: 20px;">├── 🔄 <strong>Recurring Entries</strong></div>
+                        <div style="margin-left: 40px;">│   ├── ➕ Add Recurring</div>
+                        <div style="margin-left: 40px;">│   └── ✏️ Edit Recurring</div>
+                        <div style="margin-left: 20px;">├── 📈 <strong>Projections</strong></div>
+                        <div style="margin-left: 40px;">│   └── 📊 Future Balance View</div>
+                        <div style="margin-left: 20px;">└── ⚙️ <strong>Settings</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab and activate button
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Add hover effects to cards
+        document.querySelectorAll('.screen-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click effects to navigation items
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

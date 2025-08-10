@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial App - Dark Theme UI Sketches</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e6ed;
+            line-height: 1.4;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .phone-mockup {
+            background: #0d1421;
+            border-radius: 25px;
+            padding: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            position: relative;
+            border: 1px solid #1f2937;
+        }
+
+        .phone-screen {
+            background: #111827;
+            border-radius: 15px;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #1f2937;
+        }
+
+        .status-bar {
+            background: #1f2937;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #9ca3af;
+            border-bottom: 1px solid #374151;
+        }
+
+        .screen-header {
+            background: #111827;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-bottom: 1px solid #374151;
+        }
+
+        .back-button {
+            font-size: 18px;
+            color: #6366f1;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .screen-title {
+            font-size: 16px;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .screen-content {
+            padding: 20px 20px 100px 20px;
+            height: calc(100% - 90px);
+            overflow-y: auto;
+            background: #111827;
+        }
+
+        .screen-content.no-bottom-nav {
+            padding-bottom: 20px;
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1f2937;
+            border-top: 1px solid #374151;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .nav-item {
+            text-align: center;
+            font-size: 10px;
+            color: #9ca3af;
+            flex: 1;
+        }
+
+        .nav-item.active {
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            background: currentColor;
+            border-radius: 4px;
+            margin: 0 auto 4px;
+            opacity: 0.7;
+        }
+
+        .nav-item.active .nav-icon {
+            opacity: 1;
+        }
+
+        /* Dashboard Specific */
+        .balance-card {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .balance-amount {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .balance-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .projection-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .projection-card {
+            flex: 1;
+            background: #1f2937;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #374151;
+        }
+
+        .projection-amount {
+            font-size: 18px;
+            font-weight: 600;
+            color: #6366f1;
+            margin-bottom: 3px;
+        }
+
+        .projection-label {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .action-btn {
+            background: #1f2937;
+            border: 2px solid #6366f1;
+            color: #6366f1;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background: #6366f1;
+            color: white;
+        }
+
+        .recent-section {
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #e5e7eb;
+        }
+
+        .recent-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #374151;
+        }
+
+        .recent-item:last-child {
+            border-bottom: none;
+        }
+
+        .recent-info {
+            flex: 1;
+        }
+
+        .recent-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .recent-subtitle {
+            font-size: 10px;
+            color: #9ca3af;
+        }
+
+        .recent-amount {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .positive {
+            color: #10b981;
+        }
+
+        .negative {
+            color: #ef4444;
+        }
+
+        /* Accounts Screen */
+        .account-card {
+            display: flex;
+            align-items: center;
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .account-card:hover {
+            border-color: #6366f1;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+        }
+
+        .account-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        .account-info {
+            flex: 1;
+        }
+
+        .account-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 2px;
+        }
+
+        .account-type {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        .account-balance {
+            font-size: 16px;
+            font-weight: 700;
+            color: #e5e7eb;
+        }
+
+        .add-btn {
+            position: absolute;
+            bottom: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+        }
+
+        /* Balance History */
+        .history-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #374151;
+        }
+
+        .history-date {
+            width: 60px;
+            text-align: center;
+            margin-right: 15px;
+        }
+
+        .history-day {
+            font-size: 16px;
+            font-weight: 700;
+            color: #e5e7eb;
+        }
+
+        .history-month {
+            font-size: 10px;
+            color: #9ca3af;
+        }
+
+        .history-details {
+            flex: 1;
+        }
+
+        .history-account {
+            font-size: 12px;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 2px;
+        }
+
+        .history-note {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        .history-amounts {
+            text-align: right;
+        }
+
+        .history-change {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .history-balance {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        /* Month Selector */
+        .month-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #1f2937;
+            border-radius: 8px;
+            border: 1px solid #374151;
+        }
+
+        .month-arrow {
+            font-size: 18px;
+            color: #6366f1;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .month-display {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e5e7eb;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        /* Projections */
+        .projection-summary {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .projection-month {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .projection-balance {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .upcoming-section {
+            margin-bottom: 20px;
+        }
+
+        .upcoming-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: #1f2937;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border: 1px solid #374151;
+        }
+
+        .upcoming-info {
+            flex: 1;
+        }
+
+        .upcoming-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .upcoming-date {
+            font-size: 10px;
+            color: #9ca3af;
+        }
+
+        .upcoming-amount {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .screen-label {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Form Styles */
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 8px;
+        }
+
+        .form-input-container {
+            position: relative;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            font-size: 14px;
+            background: #1f2937;
+            color: #e5e7eb;
+        }
+
+        .form-input.large {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            color: #6366f1;
+        }
+
+        .form-textarea {
+            height: 60px;
+            resize: vertical;
+        }
+
+        .current-balance-display {
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .current-label {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-bottom: 5px;
+        }
+
+        .current-amount {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e5e7eb;
+        }
+
+        .balance-change-indicator {
+            background: #064e3b;
+            border: 1px solid #047857;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .change-label {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-bottom: 3px;
+        }
+
+        .change-amount {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .btn-primary, .btn-secondary {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #1f2937;
+            color: #6366f1;
+            border: 2px solid #6366f1;
+        }
+
+        /* Transfer Visual */
+        .transfer-visual {
+            background: #1f2937;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            border: 1px solid #374151;
+        }
+
+        .transfer-account-card {
+            background: #111827;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .account-icon-small {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .account-details {
+            flex: 1;
+            text-align: left;
+        }
+
+        .account-name-small {
+            font-size: 12px;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .account-balance-small {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        .transfer-arrow-large {
+            font-size: 24px;
+            color: #6366f1;
+            margin: 10px 0;
+        }
+
+        /* Icon Selector */
+        .icon-selector {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .icon-option {
+            width: 50px;
+            height: 50px;
+            background: #1f2937;
+            border: 2px solid #374151;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .icon-option.selected {
+            border-color: #6366f1;
+            background: #1e1b4b;
+        }
+
+        .icon-option:hover {
+            border-color: #6366f1;
+        }
+
+        @media (max-width: 768px) {
+            .screens-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Financial App - Dark Theme UI Sketches</h1>
+
+        <div class="screens-grid">
+            <!-- Dashboard Screen -->
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>100% 🔋</span>
+                    </div>
+                    
+                    <div class="screen-header">
+                        <div class="screen-title">Financial Overview</div>
+                    </div>
+
+                    <div class="screen-content">
+                        <div class="balance-card">
+                            <div class="balance-amount">$12,847.50</div>
+                            <div class="balance-label">Total Balance</div>
+                        </div>
+
+                        <div class="projection-row">
+                            <div class="projection-card">
+                                <div class="projection-amount">$13,200</div>
+                                <div class="projection-label">This Month</div>
+                            </div>
+                            <div class="projection-card">
+                                <div class="projection-amount">$14,100</div>
+                                <div class="projection-label">Next Month</div>
+                            </div>
+                        </div>
+
+                        <div class="quick-actions">
+                            <div class="action-btn">💰 Update Balance</div>
+                            <div class="action-btn">↔️ Transfer Money</div>
+                        </div>
+
+                        <div class="recent-section">
+                            <div class="section-title">Recent Balance Updates</div>
+                            
+                            <div class="recent-item">
+                                <div class="recent-info">
+                                    <div class="recent-title">Main Checking</div>
+                                    <div class="recent-subtitle">2 hours ago</div>
+                                </div>
+                                <div class="recent-amount positive">+$2,400</div>
+                            </div>
+
+                            <div class="recent-item">
+                                <div class="recent-info">
+                                    <div class="recent-title">Cash Wallet</div>
+                                    <div class="recent-subtitle">Yesterday</div>
+                                </div>
+                                <div class="recent-amount negative">-$85</div>
+                            </div>
+
+                            <div class="recent-item">
+                                <div class="recent-info">
+                                    <div class="recent-title">Savings</div>
+                                    <div class="recent-subtitle">3 days ago</div>
+                                </div>
+                                <div class="recent-amount positive">+$500</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bottom-nav">
+                        <div class="nav-item active">
+                            <div class="nav-icon"></div>
+                            Home
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            Accounts
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            History
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            Projects
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-label">Dashboard / Home Screen</div>
+            </div>
+
+            <!-- Accounts Screen -->
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>100% 🔋</span>
+                    </div>
+                    
+                    <div class="screen-header">
+                        <div class="screen-title">My Accounts</div>
+                    </div>
+
+                    <div class="screen-content">
+                        <div class="account-card">
+                            <div class="account-icon">🏦</div>
+                            <div class="account-info">
+                                <div class="account-name">Main Checking</div>
+                                <div class="account-type">Bank Account</div>
+                            </div>
+                            <div class="account-balance">$8,247.50</div>
+                        </div>
+
+                        <div class="account-card">
+                            <div class="account-icon">💰</div>
+                            <div class="account-info">
+                                <div class="account-name">Emergency Fund</div>
+                                <div class="account-type">Savings</div>
+                            </div>
+                            <div class="account-balance">$3,200.00</div>
+                        </div>
+
+                        <div class="account-card">
+                            <div class="account-icon">💳</div>
+                            <div class="account-info">
+                                <div class="account-name">Credit Card</div>
+                                <div class="account-type">Credit</div>
+                            </div>
+                            <div class="account-balance negative">-$450.00</div>
+                        </div>
+
+                        <div class="account-card">
+                            <div class="account-icon">💵</div>
+                            <div class="account-info">
+                                <div class="account-name">Cash Wallet</div>
+                                <div class="account-type">Cash</div>
+                            </div>
+                            <div class="account-balance">$1,850.00</div>
+                        </div>
+                    </div>
+
+                    <button class="add-btn">+</button>
+
+                    <div class="bottom-nav">
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            Home
+                        </div>
+                        <div class="nav-item active">
+                            <div class="nav-icon"></div>
+                            Accounts
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            History
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            Projects
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-label">Accounts Screen</div>
+            </div>
+
+            <!-- Balance History Screen -->
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>100% 🔋</span>
+                    </div>
+                    
+                    <div class="screen-header">
+                        <div class="screen-title">Balance History</div>
+                    </div>
+
+                    <div class="screen-content">
+                        <div class="history-item">
+                            <div class="history-date">
+                                <div class="history-day">15</div>
+                                <div class="history-month">DEC</div>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-account">Main Checking</div>
+                                <div class="history-note">Salary deposit</div>
+                            </div>
+                            <div class="history-amounts">
+                                <div class="history-change positive">+$2,400</div>
+                                <div class="history-balance">$8,247.50</div>
+                            </div>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-date">
+                                <div class="history-day">14</div>
+                                <div class="history-month">DEC</div>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-account">Cash Wallet</div>
+                                <div class="history-note">ATM withdrawal</div>
+                            </div>
+                            <div class="history-amounts">
+                                <div class="history-change negative">-$200</div>
+                                <div class="history-balance">$1,850.00</div>
+                            </div>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-date">
+                                <div class="history-day">12</div>
+                                <div class="history-month">DEC</div>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-account">Emergency Fund</div>
+                                <div class="history-note">Monthly savings</div>
+                            </div>
+                            <div class="history-amounts">
+                                <div class="history-change positive">+$500</div>
+                                <div class="history-balance">$3,200.00</div>
+                            </div>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-date">
+                                <div class="history-day">10</div>
+                                <div class="history-month">DEC</div>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-account">Credit Card</div>
+                                <div class="history-note">Online purchase</div>
+                            </div>
+                            <div class="history-amounts">
+                                <div class="history-change negative">-$85</div>
+                                <div class="history-balance negative">-$450.00</div>
+                            </div>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-date">
+                                <div class="history-day">08</div>
+                                <div class="history-month">DEC</div>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-account">Main Checking</div>
+                                <div class="history-note">Rent payment</div>
+                            </div>
+                            <div class="history-amounts">
+                                <div class="history-change negative">-$1,200</div>
+                                <div class="history-balance">$5,847.50</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bottom-nav">
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            Home
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            Accounts
+                        </div>
+                        <div class="nav-item active">
+                            <div class="nav-icon"></div>
+                            History
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            Projects
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-label">Balance History Screen</div>
+            </div>
+
+            <!-- Projections Screen -->
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>100% 🔋</span>
+                    </div>
+                    
+                    <div class="screen-header">
+                        <div class="screen-title">Balance Projections</div>
+                    </div>
+
+                    <div class="screen-content">
+                        <div class="month-selector">
+                            <div class="month-arrow">‹</div>
+                            <div class="month-display">January 2025</div>
+                            <div class="month-arrow">›</div>
+                        </div>
+
+                        <div class="projection-summary">
+                            <div class="projection-month">January 2025</div>
+                            <div class="projection-balance">$14,100.00</div>
+                        </div>
+
+                        <div class="upcoming-section">
+
+                            <div class="section-title">Expected Income</div>
+
+                            <div class="upcoming-item">
+                                <div class="upcoming-info">
+                                    <div class="upcoming-title">Monthly Salary</div>
+                                    <div class="upcoming-date">Jan 15, 2025</div>
+                                </div>
+                                <div class="upcoming-amount positive">+$2,800</div>
+                            </div>
+
+                            <div class="upcoming-item">
+                                <div class="upcoming-info">
+                                    <div class="upcoming-title">Freelance Project</div>
+                                    <div class="upcoming-date">Jan 20, 2025</div>
+                                </div>
+                                <div class="upcoming-amount positive">+$1,200</div>
+                            </div>
+
+                            <div class="section-title">Expected Expenses</div>
+                            
+                            <div class="upcoming-item">
+                                <div class="upcoming-info">
+                                    <div class="upcoming-title">Rent Payment</div>
+                                    <div class="upcoming-date">Jan 1, 2025</div>
+                                </div>
+                                <div class="upcoming-amount negative">-$1,200</div>
+                            </div>
+
+                            <div class="upcoming-item">
+                                <div class="upcoming-info">
+                                    <div class="upcoming-title">Car Insurance</div>
+                                    <div class="upcoming-date">Jan 5, 2025</div>
+                                </div>
+                                <div class="upcoming-amount negative">-$150</div>
+                            </div>
+
+                            <div class="upcoming-item">
+                                <div class="upcoming-info">
+                                    <div class="upcoming-title">Groceries Budget</div>
+                                    <div class="upcoming-date">Monthly</div>
+                                </div>
+                                <div class="upcoming-amount negative">-$400</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="add-btn">+</button>
+
+                    <div class="bottom-nav">
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            Home
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            Accounts
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon"></div>
+                            History
+                        </div>
+                        <div class="nav-item active">
+                            <div class="nav-icon"></div>
+                            Projects
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-label">Projections Screen</div>
+            </div>
+
+            <!-- Update Balance Form -->
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>100% 🔋</span>
+                    </div>
+                    
+                    <div class="screen-header">
+                        <div class="back-button">‹</div>
+                        <div class="screen-title">Update Balance</div>
+                    </div>
+
+                    <div class="screen-content no-bottom-nav">
+                        <div class="form-section">
+                            <div class="form-label">Account</div>
+                            <div class="form-input-container">
+                                <select class="form-select">
+                                    <option>Main Checking</option>
+                                    <option>Emergency Fund</option>
+                                    <option>Cash Wallet</option>
+                                    <option>Credit Card</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="current-balance-display">
+                            <div class="current-label">Current Balance</div>
+                            <div class="current-amount">$8,247.50</div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">New Balance</div>
+                            <div class="form-input-container">
+                                <input type="text" class="form-input large" placeholder="$0.00" value="$8,647.50">
+                            </div>
+                        </div>
+
+                        <div class="balance-change-indicator">
+                            <div class="change-label">Change</div>
+                            <div class="change-amount positive">+$400.00</div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">Notes (Optional)</div>
+                            <div class="form-input-container">
+                                <textarea class="form-textarea" placeholder="What caused this change?">Bonus payment received</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">Date</div>
+                            <div class="form-input-container">
+                                <input type="date" class="form-input" value="2024-12-15">
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button class="btn-secondary">Cancel</button>
+                            <button class="btn-primary">Update Balance</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-label">Update Balance Form</div>
+            </div>
+
+            <!-- Transfer Money Form -->
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>100% 🔋</span>
+                    </div>
+                    
+                    <div class="screen-header">
+                        <div class="back-button">‹</div>
+                        <div class="screen-title">Transfer Money</div>
+                    </div>
+
+                    <div class="screen-content no-bottom-nav">
+                        <div class="transfer-visual">
+                            <div class="transfer-account-card from">
+                                <div class="account-icon-small">🏦</div>
+                                <div class="account-details">
+                                    <div class="account-name-small">Main Checking</div>
+                                    <div class="account-balance-small">$8,247.50</div>
+                                </div>
+                            </div>
+                            
+                            <div class="transfer-arrow-large">↓</div>
+                            
+                            <div class="transfer-account-card to">
+                                <div class="account-icon-small">💰</div>
+                                <div class="account-details">
+                                    <div class="account-name-small">Emergency Fund</div>
+                                    <div class="account-balance-small">$3,200.00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">From Account</div>
+                            <div class="form-input-container">
+                                <select class="form-select">
+                                    <option>Main Checking</option>
+                                    <option>Cash Wallet</option>
+                                    <option>Emergency Fund</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">To Account</div>
+                            <div class="form-input-container">
+                                <select class="form-select">
+                                    <option>Emergency Fund</option>
+                                    <option>Cash Wallet</option>
+                                    <option>Main Checking</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">Amount</div>
+                            <div class="form-input-container">
+                                <input type="text" class="form-input large" placeholder="$0.00" value="$500.00">
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">Description (Optional)</div>
+                            <div class="form-input-container">
+                                <input type="text" class="form-input" placeholder="Monthly savings transfer" value="Monthly savings">
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button class="btn-secondary">Cancel</button>
+                            <button class="btn-primary">Transfer</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-label">Transfer Money Form</div>
+            </div>
+
+            <!-- Add Account Form -->
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>100% 🔋</span>
+                    </div>
+                    
+                    <div class="screen-header">
+                        <div class="back-button">‹</div>
+                        <div class="screen-title">Add Account</div>
+                    </div>
+
+                    <div class="screen-content no-bottom-nav">
+                        <div class="form-section">
+                            <div class="form-label">Account Name</div>
+                            <div class="form-input-container">
+                                <input type="text" class="form-input" placeholder="e.g., Business Checking" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">Account Type</div>
+                            <div class="form-input-container">
+                                <select class="form-select">
+                                    <option>Checking</option>
+                                    <option>Savings</option>
+                                    <option>Credit Card</option>
+                                    <option>Cash</option>
+                                    <option>Investment</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">Initial Balance</div>
+                            <div class="form-input-container">
+                                <input type="text" class="form-input large" placeholder="$0.00" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">Account Icon</div>
+                            <div class="icon-selector">
+                                <div class="icon-option selected">🏦</div>
+                                <div class="icon-option">💰</div>
+                                <div class="icon-option">💳</div>
+                                <div class="icon-option">💵</div>
+                                <div class="icon-option">💎</div>
+                                <div class="icon-option">🏠</div>
+                                <div class="icon-option">🚗</div>
+                                <div class="icon-option">📊</div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">Notes (Optional)</div>
+                            <div class="form-input-container">
+                                <textarea class="form-textarea" placeholder="Any additional information about this account"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button class="btn-secondary">Cancel</button>
+                            <button class="btn-primary">Add Account</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-label">Add Account Form</div>
+            </div>
+
+            <!-- Edit Account Form -->
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>100% 🔋</span>
+                    </div>
+                    
+                    <div class="screen-header">
+                        <div class="back-button">‹</div>
+                        <div class="screen-title">Edit Account</div>
+                    </div>
+
+                    <div class="screen-content no-bottom-nav">
+                        <div class="form-section">
+                            <div class="form-label">Account Name</div>
+                            <div class="form-input-container">
+                                <input type="text" class="form-input" placeholder="e.g., Business Checking" value="Main Checking">
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">Account Type</div>
+                            <div class="form-input-container">
+                                <select class="form-select">
+                                    <option selected>Checking</option>
+                                    <option>Savings</option>
+                                    <option>Credit Card</option>
+                                    <option>Cash</option>
+                                    <option>Investment</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="current-balance-display">
+                            <div class="current-label">Current Balance</div>
+                            <div class="current-amount">$8,247.50</div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">Account Icon</div>
+                            <div class="icon-selector">
+                                <div class="icon-option selected">🏦</div>
+                                <div class="icon-option">💰</div>
+                                <div class="icon-option">💳</div>
+                                <div class="icon-option">💵</div>
+                                <div class="icon-option">💎</div>
+                                <div class="icon-option">🏠</div>
+                                <div class="icon-option">🚗</div>
+                                <div class="icon-option">📊</div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label">Notes (Optional)</div>
+                            <div class="form-input-container">
+                                <textarea class="form-textarea" placeholder="Any additional information about this account">Primary checking account for daily expenses</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button class="btn-secondary">Delete Account</button>
+                            <button class="btn-primary">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-label">Edit Account Form</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+                            
