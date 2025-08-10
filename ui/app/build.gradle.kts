@@ -12,7 +12,6 @@ androidLibrary {
 multiplatform {
     commonMain {
         implementation(project(":ui:foundation"))
-        implementation(compose.material)
     }
     androidMain {
         implementation(libs.android.compose.tooling.preview)

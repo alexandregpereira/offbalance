@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -22,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceColors
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceGradients
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceSize
-import br.alexandregpereira.offbalance.ui.foundation.offbalance
+import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTheme
 
 // Button variants matching the design system
 enum class OffbalanceButtonStyle {
@@ -38,7 +37,7 @@ fun OffbalanceButton(
     modifier: Modifier = Modifier,
     style: OffbalanceButtonStyle = OffbalanceButtonStyle.PRIMARY,
     enabled: Boolean = true,
-    shape: Shape = MaterialTheme.offbalance.customShapes.button,
+    shape: Shape = OffbalanceTheme.shapes.button,
     contentPadding: PaddingValues = PaddingValues(
         horizontal = OffbalanceSize.buttonPaddingHorizontal,
         vertical = OffbalanceSize.buttonPaddingVertical

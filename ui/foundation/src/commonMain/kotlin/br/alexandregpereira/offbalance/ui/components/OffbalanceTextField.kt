@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -24,7 +23,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceColors
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceSize
-import br.alexandregpereira.offbalance.ui.foundation.offbalance
+import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTheme
 
 @Composable
 fun OffbalanceTextField(
@@ -33,7 +32,7 @@ fun OffbalanceTextField(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     readOnly: Boolean = false,
-    textStyle: TextStyle = MaterialTheme.typography.body2.copy(
+    textStyle: TextStyle = OffbalanceTheme.typography.body2.copy(
         color = OffbalanceColors.TextPrimary
     ),
     placeholder: (@Composable () -> Unit)? = null,
@@ -46,7 +45,7 @@ fun OffbalanceTextField(
     singleLine: Boolean = false,
     maxLines: Int = Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    shape: Shape = MaterialTheme.offbalance.customShapes.inputField
+    shape: Shape = OffbalanceTheme.shapes.inputField
 ) {
     val backgroundColor = OffbalanceColors.SurfaceMedium
     val borderColor = if (isError) {
@@ -102,7 +101,7 @@ fun MoneyTextField(
         onValueChange = onValueChange,
         modifier = modifier,
         enabled = enabled,
-        textStyle = MaterialTheme.typography.h4.copy(
+        textStyle = OffbalanceTheme.typography.h4.copy(
             color = OffbalanceColors.TextPrimary,
             fontFamily = FontFamily.Monospace
         ),

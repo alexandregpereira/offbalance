@@ -10,9 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,15 +26,17 @@ import br.alexandregpereira.offbalance.ui.components.OffbalanceButton
 import br.alexandregpereira.offbalance.ui.components.OffbalanceButtonStyle
 import br.alexandregpereira.offbalance.ui.components.OffbalanceCard
 import br.alexandregpereira.offbalance.ui.components.OffbalanceCardStyle
+import br.alexandregpereira.offbalance.ui.components.OffbalanceScaffold
+import br.alexandregpereira.offbalance.ui.components.OffbalanceText
 import br.alexandregpereira.offbalance.ui.components.OffbalanceTextField
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceColors
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTextStyles
-import br.alexandregpereira.offbalance.ui.foundation.offbalance
+import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTheme
 
 @Composable
 fun DesignSystemScreen() {
     BackgroundGradient {
-        Scaffold(
+        OffbalanceScaffold(
             backgroundColor = Color.Transparent,
             contentColor = OffbalanceColors.TextPrimary
         ) { paddingValues ->
@@ -45,28 +44,28 @@ fun DesignSystemScreen() {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
-                    .padding(MaterialTheme.offbalance.spacing.screen)
+                    .padding(OffbalanceTheme.spacing.screen)
                     .verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.lg)
+                verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.lg)
             ) {
                 // Header
-                Text(
+                OffbalanceText(
                     text = "💰 Offbalance",
-                    style = MaterialTheme.typography.h1,
+                    style = OffbalanceTheme.typography.h1,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()
                 )
                 
-                Text(
+                OffbalanceText(
                     text = "Financial Design System Demo",
-                    style = MaterialTheme.typography.body1.copy(
+                    style = OffbalanceTheme.typography.body1.copy(
                         color = OffbalanceColors.TextSecondary
                     ),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()
                 )
                 
-                Spacer(modifier = Modifier.height(MaterialTheme.offbalance.spacing.lg))
+                Spacer(modifier = Modifier.height(OffbalanceTheme.spacing.lg))
                 
                 // Main Balance Card
                 FinancialCard(
@@ -76,13 +75,13 @@ fun DesignSystemScreen() {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(
+                        OffbalanceText(
                             text = "$12,847.50",
                             style = OffbalanceTextStyles.MoneyLarge
                         )
-                        Text(
+                        OffbalanceText(
                             text = "Total Balance",
-                            style = MaterialTheme.typography.body1.copy(
+                            style = OffbalanceTheme.typography.body1.copy(
                                 color = OffbalanceColors.TextWhite.copy(alpha = 0.9f)
                             )
                         )
@@ -92,22 +91,22 @@ fun DesignSystemScreen() {
                 // Account Cards Row
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.md)
+                    horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                 ) {
                     OffbalanceCard(
                         style = OffbalanceCardStyle.SECONDARY,
                         modifier = Modifier.weight(1f)
                     ) {
                         Column {
-                            Text(
+                            OffbalanceText(
                                 text = "🏦",
-                                style = MaterialTheme.typography.h4
+                                style = OffbalanceTheme.typography.h4
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "Main Checking",
-                                style = MaterialTheme.typography.h6
+                                style = OffbalanceTheme.typography.h6
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "$8,247.50",
                                 style = OffbalanceTextStyles.MoneySmall
                             )
@@ -119,19 +118,19 @@ fun DesignSystemScreen() {
                         modifier = Modifier.weight(1f)
                     ) {
                         Column {
-                            Text(
+                            OffbalanceText(
                                 text = "💰",
-                                style = MaterialTheme.typography.h4.copy(
+                                style = OffbalanceTheme.typography.h4.copy(
                                     color = OffbalanceColors.TextWhite
                                 )
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "Savings",
-                                style = MaterialTheme.typography.h6.copy(
+                                style = OffbalanceTheme.typography.h6.copy(
                                     color = OffbalanceColors.TextWhite
                                 )
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "$3,200.00",
                                 style = OffbalanceTextStyles.MoneySmall.copy(
                                     color = OffbalanceColors.TextWhite
@@ -144,19 +143,19 @@ fun DesignSystemScreen() {
                 // Input Field Example
                 var textFieldValue by remember { mutableStateOf("") }
                 Column {
-                    Text(
+                    OffbalanceText(
                         text = "Account Name",
-                        style = MaterialTheme.typography.overline
+                        style = OffbalanceTheme.typography.overline
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.offbalance.spacing.sm))
+                    Spacer(modifier = Modifier.height(OffbalanceTheme.spacing.sm))
                     OffbalanceTextField(
                         value = textFieldValue,
                         onValueChange = { textFieldValue = it },
                         modifier = Modifier.fillMaxWidth(),
                         placeholder = {
-                            Text(
+                            OffbalanceText(
                                 text = "e.g., Main Checking",
-                                style = MaterialTheme.typography.body2.copy(
+                                style = OffbalanceTheme.typography.body2.copy(
                                     color = OffbalanceColors.TextMuted
                                 )
                             )
@@ -167,19 +166,19 @@ fun DesignSystemScreen() {
                 // Money Input Field Example
                 var moneyValue by remember { mutableStateOf("") }
                 Column {
-                    Text(
+                    OffbalanceText(
                         text = "Amount",
-                        style = MaterialTheme.typography.overline
+                        style = OffbalanceTheme.typography.overline
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.offbalance.spacing.sm))
+                    Spacer(modifier = Modifier.height(OffbalanceTheme.spacing.sm))
                     MoneyTextField(
                         value = moneyValue,
                         onValueChange = { moneyValue = it },
                         modifier = Modifier.fillMaxWidth(),
                         placeholder = {
-                            Text(
+                            OffbalanceText(
                                 text = "$0.00",
-                                style = MaterialTheme.typography.h4.copy(
+                                style = OffbalanceTheme.typography.h4.copy(
                                     color = OffbalanceColors.TextMuted
                                 )
                             )
@@ -189,31 +188,31 @@ fun DesignSystemScreen() {
                 
                 // Button Examples
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.md)
+                    verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                 ) {
                     OffbalanceButton(
                         onClick = { },
                         style = OffbalanceButtonStyle.PRIMARY,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(
+                        OffbalanceText(
                             text = "Update Balance",
-                            style = MaterialTheme.typography.button
+                            style = OffbalanceTheme.typography.button
                         )
                     }
                     
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.md)
+                        horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                     ) {
                         OffbalanceButton(
                             onClick = { },
                             style = OffbalanceButtonStyle.SECONDARY,
                             modifier = Modifier.weight(1f)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "Cancel",
-                                style = MaterialTheme.typography.button.copy(
+                                style = OffbalanceTheme.typography.button.copy(
                                     color = OffbalanceColors.Primary
                                 )
                             )
@@ -224,9 +223,9 @@ fun DesignSystemScreen() {
                             style = OffbalanceButtonStyle.DANGER,
                             modifier = Modifier.weight(1f)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "Delete",
-                                style = MaterialTheme.typography.button
+                                style = OffbalanceTheme.typography.button
                             )
                         }
                     }
@@ -238,221 +237,221 @@ fun DesignSystemScreen() {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Column(
-                        verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.md)
+                        verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                     ) {
-                        Text(
+                        OffbalanceText(
                             text = "📝 Typography",
-                            style = MaterialTheme.typography.h2,
+                            style = OffbalanceTheme.typography.h2,
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth()
                         )
                         
                         // Header styles
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "Financial Overview",
-                                style = MaterialTheme.typography.h1
+                                style = OffbalanceTheme.typography.h1
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "H1 - Header Large (35.2px, Bold)",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
                         }
                         
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "Account Balance",
-                                style = MaterialTheme.typography.h2
+                                style = OffbalanceTheme.typography.h2
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "H2 - Header Medium (25.6px, SemiBold)",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
                         }
                         
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "$12,847.50",
-                                style = MaterialTheme.typography.h3
+                                style = OffbalanceTheme.typography.h3
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "H3 - Display Large (28px, Bold) - Main Balance",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
                         }
                         
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "$13,200",
-                                style = MaterialTheme.typography.h4
+                                style = OffbalanceTheme.typography.h4
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "H4 - Display Medium (18px, SemiBold) - Projections",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
                         }
                         
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "Recent Balance Updates",
-                                style = MaterialTheme.typography.h5
+                                style = OffbalanceTheme.typography.h5
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "H5 - Body Large (14px, SemiBold) - Section Titles",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
                         }
                         
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "Main Checking",
-                                style = MaterialTheme.typography.h6
+                                style = OffbalanceTheme.typography.h6
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "H6 - Body Medium (12px, SemiBold) - Item Titles",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
                         }
                         
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "This is regular body text for paragraphs and content",
-                                style = MaterialTheme.typography.body2
+                                style = OffbalanceTheme.typography.body2
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "Body2 - Standard body text (14px, Normal)",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
                         }
                         
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "This Month",
-                                style = MaterialTheme.typography.body1
+                                style = OffbalanceTheme.typography.body1
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "Body1 - Labels & metadata (11px, Normal)",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
                         }
                         
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "2 hours ago",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "Caption - Timestamps (10px, Normal)",
-                                style = MaterialTheme.typography.caption.copy(
+                                style = OffbalanceTheme.typography.caption.copy(
                                     color = OffbalanceColors.TextMuted
                                 )
                             )
                         }
                         
                         // Specialized money styles
-                        Text(
+                        OffbalanceText(
                             text = "💰 Money Typography",
-                            style = MaterialTheme.typography.h6,
-                            modifier = Modifier.padding(top = MaterialTheme.offbalance.spacing.lg)
+                            style = OffbalanceTheme.typography.h6,
+                            modifier = Modifier.padding(top = OffbalanceTheme.spacing.lg)
                         )
                         
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "$12,847.50",
                                 style = OffbalanceTextStyles.MoneyLarge
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "Money Large - Main balances (28px, Bold, Monospace)",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
                         }
                         
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "$1,234.56",
                                 style = OffbalanceTextStyles.MoneyMedium
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "Money Medium - Secondary amounts (18px, SemiBold, Monospace)",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
                         }
                         
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.sm)
+                            verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                         ) {
-                            Text(
+                            OffbalanceText(
                                 text = "$123.45",
                                 style = OffbalanceTextStyles.MoneySmall
                             )
-                            Text(
+                            OffbalanceText(
                                 text = "Money Small - List amounts (14px, SemiBold, Monospace)",
-                                style = MaterialTheme.typography.caption
+                                style = OffbalanceTheme.typography.caption
                             )
                         }
                         
                         // Status text styles
-                        Text(
+                        OffbalanceText(
                             text = "🎯 Status Typography",
-                            style = MaterialTheme.typography.h6,
-                            modifier = Modifier.padding(top = MaterialTheme.offbalance.spacing.lg)
+                            style = OffbalanceTheme.typography.h6,
+                            modifier = Modifier.padding(top = OffbalanceTheme.spacing.lg)
                         )
                         
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.offbalance.spacing.md)
+                            horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
-                                Text(
+                                OffbalanceText(
                                     text = "+$250.00",
                                     style = OffbalanceTextStyles.Success
                                 )
-                                Text(
+                                OffbalanceText(
                                     text = "Success",
-                                    style = MaterialTheme.typography.caption
+                                    style = OffbalanceTheme.typography.caption
                                 )
                             }
                             
                             Column(modifier = Modifier.weight(1f)) {
-                                Text(
+                                OffbalanceText(
                                     text = "-$89.99",
                                     style = OffbalanceTextStyles.Error
                                 )
-                                Text(
+                                OffbalanceText(
                                     text = "Error",
-                                    style = MaterialTheme.typography.caption
+                                    style = OffbalanceTheme.typography.caption
                                 )
                             }
                             
                             Column(modifier = Modifier.weight(1f)) {
-                                Text(
+                                OffbalanceText(
                                     text = "Pending",
                                     style = OffbalanceTextStyles.Warning
                                 )
-                                Text(
+                                OffbalanceText(
                                     text = "Warning",
-                                    style = MaterialTheme.typography.caption
+                                    style = OffbalanceTheme.typography.caption
                                 )
                             }
                         }
@@ -467,13 +466,13 @@ fun DesignSystemScreen() {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(
+                        OffbalanceText(
                             text = "✨ Glassmorphism Card",
-                            style = MaterialTheme.typography.h6
+                            style = OffbalanceTheme.typography.h6
                         )
-                        Text(
+                        OffbalanceText(
                             text = "Modern glass effect design",
-                            style = MaterialTheme.typography.body1.copy(
+                            style = OffbalanceTheme.typography.body1.copy(
                                 color = OffbalanceColors.TextSecondary
                             )
                         )
