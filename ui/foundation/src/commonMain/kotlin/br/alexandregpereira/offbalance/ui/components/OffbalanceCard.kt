@@ -7,7 +7,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -16,7 +15,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceColors
-import br.alexandregpereira.offbalance.ui.foundation.OffbalanceGradients
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceSize
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTheme
 
@@ -37,17 +35,11 @@ fun OffbalanceCard(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable () -> Unit
 ) {
-    val backgroundBrush = when (style) {
-        OffbalanceCardStyle.PRIMARY -> OffbalanceGradients.Primary
-        OffbalanceCardStyle.SUCCESS -> OffbalanceGradients.Success
-        OffbalanceCardStyle.GLASS -> OffbalanceGradients.Glass
-        OffbalanceCardStyle.SECONDARY -> null
-    }
-    
     val backgroundColor = when (style) {
         OffbalanceCardStyle.SECONDARY -> OffbalanceColors.SurfaceMedium
         OffbalanceCardStyle.GLASS -> Color.Transparent
-        else -> Color.Transparent // Gradient cards use Brush
+        OffbalanceCardStyle.PRIMARY -> OffbalanceColors.Primary
+        OffbalanceCardStyle.SUCCESS -> OffbalanceColors.Success
     }
     
     val borderColor = when (style) {
@@ -66,11 +58,7 @@ fun OffbalanceCard(
             .defaultMinSize(minHeight = OffbalanceSize.cardMinHeight)
             .clip(shape)
             .run {
-                if (backgroundBrush != null) {
-                    background(backgroundBrush, shape)
-                } else {
-                    background(backgroundColor, shape)
-                }
+                background(backgroundColor, shape)
             }
             .run {
                 if (borderWidth > 0.dp) {
@@ -81,7 +69,7 @@ fun OffbalanceCard(
                 if (onClick != null) {
                     clickable(
                         interactionSource = interactionSource,
-                        indication = ripple(),
+                        indication = null,
                         onClick = onClick
                     )
                 } else this

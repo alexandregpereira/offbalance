@@ -19,7 +19,6 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceColors
-import br.alexandregpereira.offbalance.ui.foundation.OffbalanceGradients
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceSize
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTheme
 
@@ -45,16 +44,11 @@ fun OffbalanceButton(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable () -> Unit
 ) {
-    val backgroundBrush = when (style) {
-        OffbalanceButtonStyle.PRIMARY -> OffbalanceGradients.Primary
-        OffbalanceButtonStyle.DANGER -> OffbalanceGradients.Error
-        OffbalanceButtonStyle.SECONDARY, OffbalanceButtonStyle.TEXT -> null
-    }
-    
     val backgroundColor = when (style) {
         OffbalanceButtonStyle.SECONDARY -> OffbalanceColors.SurfaceMedium
         OffbalanceButtonStyle.TEXT -> Color.Transparent
-        else -> Color.Transparent // Gradient buttons use Brush
+        OffbalanceButtonStyle.PRIMARY -> OffbalanceColors.Primary
+        OffbalanceButtonStyle.DANGER -> OffbalanceColors.Error
     }
     
     val borderColor = when (style) {
@@ -72,11 +66,7 @@ fun OffbalanceButton(
             )
             .clip(shape)
             .run {
-                if (backgroundBrush != null) {
-                    background(backgroundBrush, shape)
-                } else {
-                    background(backgroundColor, shape)
-                }
+                background(backgroundColor, shape)
             }
             .run {
                 if (borderWidth > 0.dp) {

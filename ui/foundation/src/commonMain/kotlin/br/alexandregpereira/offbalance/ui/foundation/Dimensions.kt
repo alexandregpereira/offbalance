@@ -3,7 +3,7 @@ package br.alexandregpereira.offbalance.ui.foundation
 import androidx.compose.ui.unit.dp
 
 // Spacing scale based on design system
-object OffbalanceSpacing {
+internal object OffbalanceSpacing {
     val xs = 4.dp
     val sm = 8.dp
     val md = 12.dp
@@ -19,7 +19,7 @@ object OffbalanceSpacing {
 }
 
 // Border radius scale
-object OffbalanceRadius {
+internal object OffbalanceRadius {
     val sm = 4.dp
     val md = 8.dp // Default radius
     val lg = 12.dp // Cards
@@ -29,7 +29,7 @@ object OffbalanceRadius {
 }
 
 // Elevation/Shadow values
-object OffbalanceElevation {
+internal object OffbalanceElevation {
     val sm = 2.dp
     val md = 4.dp
     val lg = 8.dp
@@ -37,7 +37,7 @@ object OffbalanceElevation {
 }
 
 // Component dimensions
-object OffbalanceSize {
+internal object OffbalanceSize {
     // Button dimensions
     val buttonHeight = 48.dp
     val buttonMinWidth = 64.dp

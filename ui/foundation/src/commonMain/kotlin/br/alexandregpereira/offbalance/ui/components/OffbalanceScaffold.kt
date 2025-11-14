@@ -1,29 +1,26 @@
 package br.alexandregpereira.offbalance.ui.components
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material.Scaffold
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import br.alexandregpereira.offbalance.ui.foundation.OffbalanceColors
+import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTheme
 
 @Composable
 fun OffbalanceScaffold(
     modifier: Modifier = Modifier,
     topBar: @Composable () -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
-    floatingActionButton: @Composable () -> Unit = {},
-    backgroundColor: Color = Color.Transparent,
-    contentColor: Color = OffbalanceColors.TextPrimary,
-    content: @Composable (PaddingValues) -> Unit
+    backgroundColor: Color = OffbalanceTheme.colors.background,
+    content: @Composable () -> Unit
 ) {
-    Scaffold(
-        modifier = modifier,
-        topBar = topBar,
-        bottomBar = bottomBar,
-        floatingActionButton = floatingActionButton,
-        backgroundColor = backgroundColor,
-        contentColor = contentColor,
-        content = content
-    )
+    Column(
+        modifier = modifier.fillMaxSize().background(color = backgroundColor)
+    ) {
+        topBar()
+        content()
+        bottomBar()
+    }
 }

@@ -2,7 +2,6 @@ package br.alexandregpereira.offbalance.ui.foundation
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
@@ -11,18 +10,13 @@ import androidx.compose.ui.unit.Dp
 data class OffbalanceThemeTokens(
     val colors: OffbalanceColorTokens = OffbalanceColorTokens(),
     val typography: OffbalanceTypographyTokens = OffbalanceTypographyTokens(),
-    val gradients: OffbalanceGradientsTokens = OffbalanceGradientsTokens(),
     val spacing: OffbalanceSpacingTokens = OffbalanceSpacingTokens(),
     val shapes: OffbalanceShapeTokens = OffbalanceShapeTokens()
 )
 
 data class OffbalanceColorTokens(
     val primary: Color = OffbalanceColors.Primary,
-    val primaryStart: Color = OffbalanceColors.PrimaryStart,
-    val primaryEnd: Color = OffbalanceColors.PrimaryEnd,
-    val backgroundStart: Color = OffbalanceColors.BackgroundStart,
-    val backgroundMid: Color = OffbalanceColors.BackgroundMid,
-    val backgroundEnd: Color = OffbalanceColors.BackgroundEnd,
+    val background: Color = OffbalanceColors.Background,
     val surfaceDark: Color = OffbalanceColors.SurfaceDark,
     val surfaceMedium: Color = OffbalanceColors.SurfaceMedium,
     val surfaceLight: Color = OffbalanceColors.SurfaceLight,
@@ -39,17 +33,17 @@ data class OffbalanceColorTokens(
 
 data class OffbalanceTypographyTokens(
     // Standard hierarchy
-    val h1: TextStyle = OffbalanceTypography.h1,
-    val h2: TextStyle = OffbalanceTypography.h2,
-    val h3: TextStyle = OffbalanceTypography.h3,
-    val h4: TextStyle = OffbalanceTypography.h4,
-    val h5: TextStyle = OffbalanceTypography.h5,
-    val h6: TextStyle = OffbalanceTypography.h6,
-    val body1: TextStyle = OffbalanceTypography.body1,
-    val body2: TextStyle = OffbalanceTypography.body2,
-    val button: TextStyle = OffbalanceTypography.button,
-    val caption: TextStyle = OffbalanceTypography.caption,
-    val overline: TextStyle = OffbalanceTypography.overline,
+    val h1: TextStyle = OffbalanceTypography.H1,
+    val h2: TextStyle = OffbalanceTypography.H2,
+    val h3: TextStyle = OffbalanceTypography.H3,
+    val h4: TextStyle = OffbalanceTypography.H4,
+    val h5: TextStyle = OffbalanceTypography.H5,
+    val h6: TextStyle = OffbalanceTypography.H6,
+    val body1: TextStyle = OffbalanceTypography.Body1,
+    val body2: TextStyle = OffbalanceTypography.Body2,
+    val button: TextStyle = OffbalanceTypography.Button,
+    val caption: TextStyle = OffbalanceTypography.Caption,
+    val overline: TextStyle = OffbalanceTypography.Overline,
     
     // Specialized styles
     val moneyLarge: TextStyle = OffbalanceTextStyles.MoneyLarge,
@@ -58,16 +52,6 @@ data class OffbalanceTypographyTokens(
     val success: TextStyle = OffbalanceTextStyles.Success,
     val error: TextStyle = OffbalanceTextStyles.Error,
     val warning: TextStyle = OffbalanceTextStyles.Warning
-)
-
-data class OffbalanceGradientsTokens(
-    val primary: Brush = OffbalanceGradients.Primary,
-    val success: Brush = OffbalanceGradients.Success,
-    val error: Brush = OffbalanceGradients.Error,
-    val background: Brush = OffbalanceGradients.Background,
-    val glass: Brush = OffbalanceGradients.Glass,
-    val overlay: Brush = OffbalanceGradients.Overlay,
-    val cardHover: Brush = OffbalanceGradients.CardHover
 )
 
 data class OffbalanceSpacingTokens(
