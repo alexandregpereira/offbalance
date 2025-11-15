@@ -26,20 +26,20 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import br.alexandregpereira.offbalance.ui.components.Button
+import br.alexandregpereira.offbalance.ui.components.Card
 import br.alexandregpereira.offbalance.ui.components.FinancialCard
 import br.alexandregpereira.offbalance.ui.components.MoneyTextField
-import br.alexandregpereira.offbalance.ui.components.OffbalanceButton
 import br.alexandregpereira.offbalance.ui.components.OffbalanceButtonStyle
-import br.alexandregpereira.offbalance.ui.components.OffbalanceCard
 import br.alexandregpereira.offbalance.ui.components.OffbalanceCardStyle
-import br.alexandregpereira.offbalance.ui.components.OffbalanceScaffold
-import br.alexandregpereira.offbalance.ui.components.OffbalanceText
-import br.alexandregpereira.offbalance.ui.components.OffbalanceTextField
+import br.alexandregpereira.offbalance.ui.components.Scaffold
+import br.alexandregpereira.offbalance.ui.components.Text
+import br.alexandregpereira.offbalance.ui.components.TextField
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTheme
 
 @Composable
 fun DesignSystemScreen() {
-    OffbalanceScaffold(
+    Scaffold(
         backgroundColor = OffbalanceTheme.colors.background,
     ) {
         Column(
@@ -50,14 +50,14 @@ fun DesignSystemScreen() {
             verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.lg)
         ) {
             // Header
-            OffbalanceText(
+            Text(
                 text = "💰 Offbalance",
                 style = OffbalanceTheme.typography.h1,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
             )
 
-            OffbalanceText(
+            Text(
                 text = "Financial Design System Demo",
                 style = OffbalanceTheme.typography.body1.copy(
                     color = OffbalanceTheme.colors.textSecondary
@@ -76,11 +76,11 @@ fun DesignSystemScreen() {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    OffbalanceText(
+                    Text(
                         text = "$12,847.50",
                         style = OffbalanceTheme.typography.moneyLarge
                     )
-                    OffbalanceText(
+                    Text(
                         text = "Total Balance",
                         style = OffbalanceTheme.typography.body1,
                         color = OffbalanceTheme.colors.textWhite.copy(alpha = 0.9f)
@@ -93,43 +93,43 @@ fun DesignSystemScreen() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
             ) {
-                OffbalanceCard(
+                Card(
                     style = OffbalanceCardStyle.SECONDARY,
                     modifier = Modifier.weight(1f)
                 ) {
                     Column {
-                        OffbalanceText(
+                        Text(
                             text = "🏦",
                             style = OffbalanceTheme.typography.h4
                         )
-                        OffbalanceText(
+                        Text(
                             text = "Main Checking",
                             style = OffbalanceTheme.typography.h6
                         )
-                        OffbalanceText(
+                        Text(
                             text = "$8,247.50",
                             style = OffbalanceTheme.typography.moneySmall
                         )
                     }
                 }
 
-                OffbalanceCard(
+                Card(
                     style = OffbalanceCardStyle.SUCCESS,
                     modifier = Modifier.weight(1f)
                 ) {
                     Column {
-                        OffbalanceText(
+                        Text(
                             text = "💰",
                             style = OffbalanceTheme.typography.h4,
                             color = OffbalanceTheme.colors.textWhite,
                         )
-                        OffbalanceText(
+                        Text(
                             text = "Savings",
                             style = OffbalanceTheme.typography.h6.copy(
                                 color = OffbalanceTheme.colors.textWhite
                             )
                         )
-                        OffbalanceText(
+                        Text(
                             text = "$3,200.00",
                             style = OffbalanceTheme.typography.moneySmall.copy(
                                 color = OffbalanceTheme.colors.textWhite
@@ -143,17 +143,17 @@ fun DesignSystemScreen() {
             // Input Field Example
             var textFieldValue by remember { mutableStateOf("") }
             Column {
-                OffbalanceText(
+                Text(
                     text = "Account Name",
                     style = OffbalanceTheme.typography.overline
                 )
                 Spacer(modifier = Modifier.height(OffbalanceTheme.spacing.sm))
-                OffbalanceTextField(
+                TextField(
                     value = textFieldValue,
                     onValueChange = { textFieldValue = it },
                     modifier = Modifier.fillMaxWidth(),
                     placeholder = {
-                        OffbalanceText(
+                        Text(
                             text = "e.g., Main Checking",
                             style = OffbalanceTheme.typography.body2.copy(
                                 color = OffbalanceTheme.colors.textMuted
@@ -166,7 +166,7 @@ fun DesignSystemScreen() {
             // Money Input Field Example
             var moneyValue by remember { mutableStateOf("") }
             Column {
-                OffbalanceText(
+                Text(
                     text = "Amount",
                     style = OffbalanceTheme.typography.overline
                 )
@@ -176,7 +176,7 @@ fun DesignSystemScreen() {
                     onValueChange = { moneyValue = it },
                     modifier = Modifier.fillMaxWidth(),
                     placeholder = {
-                        OffbalanceText(
+                        Text(
                             text = "$0.00",
                             style = OffbalanceTheme.typography.h4.copy(
                                 color = OffbalanceTheme.colors.textMuted
@@ -190,56 +190,42 @@ fun DesignSystemScreen() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
             ) {
-                OffbalanceButton(
+                Button(
+                    text = "Update Balance",
                     onClick = { },
                     style = OffbalanceButtonStyle.PRIMARY,
                     modifier = Modifier.fillMaxWidth()
-                ) {
-                    OffbalanceText(
-                        text = "Update Balance",
-                        style = OffbalanceTheme.typography.button
-                    )
-                }
+                )
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                 ) {
-                    OffbalanceButton(
+                    Button(
+                        text = "Cancel",
                         onClick = { },
                         style = OffbalanceButtonStyle.SECONDARY,
                         modifier = Modifier.weight(1f)
-                    ) {
-                        OffbalanceText(
-                            text = "Cancel",
-                            style = OffbalanceTheme.typography.button.copy(
-                                color = OffbalanceTheme.colors.primary
-                            )
-                        )
-                    }
+                    )
 
-                    OffbalanceButton(
+                    Button(
+                        text = "Delete",
                         onClick = { },
                         style = OffbalanceButtonStyle.DANGER,
                         modifier = Modifier.weight(1f)
-                    ) {
-                        OffbalanceText(
-                            text = "Delete",
-                            style = OffbalanceTheme.typography.button
-                        )
-                    }
+                    )
                 }
             }
 
             // Typography Section
-            OffbalanceCard(
+            Card(
                 style = OffbalanceCardStyle.SECONDARY,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                 ) {
-                    OffbalanceText(
+                    Text(
                         text = "📝 Typography",
                         style = OffbalanceTheme.typography.h2,
                         textAlign = TextAlign.Center,
@@ -250,11 +236,11 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "Financial Overview",
                             style = OffbalanceTheme.typography.h1
                         )
-                        OffbalanceText(
+                        Text(
                             text = "H1 - Header Large (35.2px, Bold)",
                             style = OffbalanceTheme.typography.caption
                         )
@@ -263,11 +249,11 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "Account Balance",
                             style = OffbalanceTheme.typography.h2
                         )
-                        OffbalanceText(
+                        Text(
                             text = "H2 - Header Medium (25.6px, SemiBold)",
                             style = OffbalanceTheme.typography.caption
                         )
@@ -276,11 +262,11 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "$12,847.50",
                             style = OffbalanceTheme.typography.h3
                         )
-                        OffbalanceText(
+                        Text(
                             text = "H3 - Display Large (28px, Bold) - Main Balance",
                             style = OffbalanceTheme.typography.caption
                         )
@@ -289,11 +275,11 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "$13,200",
                             style = OffbalanceTheme.typography.h4
                         )
-                        OffbalanceText(
+                        Text(
                             text = "H4 - Display Medium (18px, SemiBold) - Projections",
                             style = OffbalanceTheme.typography.caption
                         )
@@ -302,11 +288,11 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "Recent Balance Updates",
                             style = OffbalanceTheme.typography.h5
                         )
-                        OffbalanceText(
+                        Text(
                             text = "H5 - Body Large (14px, SemiBold) - Section Titles",
                             style = OffbalanceTheme.typography.caption
                         )
@@ -315,11 +301,11 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "Main Checking",
                             style = OffbalanceTheme.typography.h6
                         )
-                        OffbalanceText(
+                        Text(
                             text = "H6 - Body Medium (12px, SemiBold) - Item Titles",
                             style = OffbalanceTheme.typography.caption
                         )
@@ -328,11 +314,11 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "This is regular body text for paragraphs and content",
                             style = OffbalanceTheme.typography.body2
                         )
-                        OffbalanceText(
+                        Text(
                             text = "Body2 - Standard body text (14px, Normal)",
                             style = OffbalanceTheme.typography.caption
                         )
@@ -341,11 +327,11 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "This Month",
                             style = OffbalanceTheme.typography.body1
                         )
-                        OffbalanceText(
+                        Text(
                             text = "Body1 - Labels & metadata (11px, Normal)",
                             style = OffbalanceTheme.typography.caption
                         )
@@ -354,11 +340,11 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "2 hours ago",
                             style = OffbalanceTheme.typography.caption
                         )
-                        OffbalanceText(
+                        Text(
                             text = "Caption - Timestamps (10px, Normal)",
                             style = OffbalanceTheme.typography.caption.copy(
                                 color = OffbalanceTheme.colors.textMuted
@@ -367,7 +353,7 @@ fun DesignSystemScreen() {
                     }
 
                     // Specialized money styles
-                    OffbalanceText(
+                    Text(
                         text = "💰 Money Typography",
                         style = OffbalanceTheme.typography.h6,
                         modifier = Modifier.padding(top = OffbalanceTheme.spacing.lg)
@@ -376,11 +362,11 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "$12,847.50",
                             style = OffbalanceTheme.typography.moneyLarge
                         )
-                        OffbalanceText(
+                        Text(
                             text = "Money Large - Main balances (28px, Bold, Monospace)",
                             style = OffbalanceTheme.typography.caption
                         )
@@ -389,11 +375,11 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "$1,234.56",
                             style = OffbalanceTheme.typography.moneyMedium
                         )
-                        OffbalanceText(
+                        Text(
                             text = "Money Medium - Secondary amounts (18px, SemiBold, Monospace)",
                             style = OffbalanceTheme.typography.caption
                         )
@@ -402,18 +388,18 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.sm)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "$123.45",
                             style = OffbalanceTheme.typography.moneySmall
                         )
-                        OffbalanceText(
+                        Text(
                             text = "Money Small - List amounts (14px, SemiBold, Monospace)",
                             style = OffbalanceTheme.typography.caption
                         )
                     }
 
                     // Status text styles
-                    OffbalanceText(
+                    Text(
                         text = "🎯 Status Typography",
                         style = OffbalanceTheme.typography.h6,
                         modifier = Modifier.padding(top = OffbalanceTheme.spacing.lg)
@@ -423,33 +409,33 @@ fun DesignSystemScreen() {
                         horizontalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                     ) {
                         Column(modifier = Modifier.weight(1f)) {
-                            OffbalanceText(
+                            Text(
                                 text = "+$250.00",
                                 style = OffbalanceTheme.typography.success
                             )
-                            OffbalanceText(
+                            Text(
                                 text = "Success",
                                 style = OffbalanceTheme.typography.caption
                             )
                         }
 
                         Column(modifier = Modifier.weight(1f)) {
-                            OffbalanceText(
+                            Text(
                                 text = "-$89.99",
                                 style = OffbalanceTheme.typography.error
                             )
-                            OffbalanceText(
+                            Text(
                                 text = "Error",
                                 style = OffbalanceTheme.typography.caption
                             )
                         }
 
                         Column(modifier = Modifier.weight(1f)) {
-                            OffbalanceText(
+                            Text(
                                 text = "Pending",
                                 style = OffbalanceTheme.typography.warning
                             )
-                            OffbalanceText(
+                            Text(
                                 text = "Warning",
                                 style = OffbalanceTheme.typography.caption
                             )
@@ -459,14 +445,14 @@ fun DesignSystemScreen() {
             }
 
             // Color Palette Section
-            OffbalanceCard(
+            Card(
                 style = OffbalanceCardStyle.SECONDARY,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.lg)
                 ) {
-                    OffbalanceText(
+                    Text(
                         text = "🎨 Color Palette",
                         style = OffbalanceTheme.typography.h2,
                         textAlign = TextAlign.Center,
@@ -477,7 +463,7 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "Primary Colors",
                             style = OffbalanceTheme.typography.h6
                         )
@@ -495,13 +481,13 @@ fun DesignSystemScreen() {
                                     .border(2.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                             )
                             Column {
-                                OffbalanceText(
+                                Text(
                                     text = "Primary Gradient",
                                     style = OffbalanceTheme.typography.body2.copy(
                                         color = OffbalanceTheme.colors.textPrimary
                                     )
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "#4F46E5 → #7C3AED",
                                     style = OffbalanceTheme.typography.caption
                                 )
@@ -521,13 +507,13 @@ fun DesignSystemScreen() {
                                     .border(2.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                             )
                             Column {
-                                OffbalanceText(
+                                Text(
                                     text = "Primary",
                                     style = OffbalanceTheme.typography.body2.copy(
                                         color = OffbalanceTheme.colors.textPrimary
                                     )
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "#6366F1",
                                     style = OffbalanceTheme.typography.caption
                                 )
@@ -539,7 +525,7 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "Background Colors",
                             style = OffbalanceTheme.typography.h6
                         )
@@ -557,13 +543,13 @@ fun DesignSystemScreen() {
                                     .border(2.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                             )
                             Column {
-                                OffbalanceText(
+                                Text(
                                     text = "Background Gradient",
                                     style = OffbalanceTheme.typography.body2.copy(
                                         color = OffbalanceTheme.colors.textPrimary
                                     )
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "#1A1A2E → #0F3460",
                                     style = OffbalanceTheme.typography.caption
                                 )
@@ -586,7 +572,7 @@ fun DesignSystemScreen() {
                                         .background(OffbalanceTheme.colors.surfaceDark)
                                         .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "Surface Dark",
                                     style = OffbalanceTheme.typography.caption,
                                     textAlign = TextAlign.Center
@@ -605,7 +591,7 @@ fun DesignSystemScreen() {
                                         .background(OffbalanceTheme.colors.surfaceMedium)
                                         .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "Surface Medium",
                                     style = OffbalanceTheme.typography.caption,
                                     textAlign = TextAlign.Center
@@ -624,7 +610,7 @@ fun DesignSystemScreen() {
                                         .background(OffbalanceTheme.colors.surfaceLight)
                                         .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "Surface Light",
                                     style = OffbalanceTheme.typography.caption,
                                     textAlign = TextAlign.Center
@@ -637,7 +623,7 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "Text Colors",
                             style = OffbalanceTheme.typography.h6
                         )
@@ -657,7 +643,7 @@ fun DesignSystemScreen() {
                                         .background(OffbalanceTheme.colors.textPrimary)
                                         .border(1.dp, Color.Black.copy(alpha = 0.2f), CircleShape)
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "Primary",
                                     style = OffbalanceTheme.typography.caption,
                                     textAlign = TextAlign.Center,
@@ -677,7 +663,7 @@ fun DesignSystemScreen() {
                                         .background(OffbalanceTheme.colors.textSecondary)
                                         .border(1.dp, Color.Black.copy(alpha = 0.2f), CircleShape)
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "Secondary",
                                     style = OffbalanceTheme.typography.caption,
                                     textAlign = TextAlign.Center,
@@ -697,7 +683,7 @@ fun DesignSystemScreen() {
                                         .background(OffbalanceTheme.colors.textMuted)
                                         .border(1.dp, Color.Black.copy(alpha = 0.2f), CircleShape)
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "Muted",
                                     style = OffbalanceTheme.typography.caption,
                                     textAlign = TextAlign.Center,
@@ -717,7 +703,7 @@ fun DesignSystemScreen() {
                                         .background(OffbalanceTheme.colors.textWhite)
                                         .border(1.dp, Color.Black.copy(alpha = 0.2f), CircleShape)
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "White",
                                     style = OffbalanceTheme.typography.caption,
                                     textAlign = TextAlign.Center,
@@ -731,7 +717,7 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "Status Colors",
                             style = OffbalanceTheme.typography.h6
                         )
@@ -749,13 +735,13 @@ fun DesignSystemScreen() {
                                     .border(2.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                             )
                             Column {
-                                OffbalanceText(
+                                Text(
                                     text = "Success Gradient",
                                     style = OffbalanceTheme.typography.body2.copy(
                                         color = OffbalanceTheme.colors.success
                                     )
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "#059669 → #10B981",
                                     style = OffbalanceTheme.typography.caption
                                 )
@@ -778,7 +764,7 @@ fun DesignSystemScreen() {
                                         .background(OffbalanceTheme.colors.success)
                                         .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "Success",
                                     style = OffbalanceTheme.typography.caption,
                                     textAlign = TextAlign.Center,
@@ -798,7 +784,7 @@ fun DesignSystemScreen() {
                                         .background(OffbalanceTheme.colors.error)
                                         .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "Error",
                                     style = OffbalanceTheme.typography.caption,
                                     textAlign = TextAlign.Center,
@@ -818,7 +804,7 @@ fun DesignSystemScreen() {
                                         .background(OffbalanceTheme.colors.warning)
                                         .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                                 )
-                                OffbalanceText(
+                                Text(
                                     text = "Warning",
                                     style = OffbalanceTheme.typography.caption,
                                     textAlign = TextAlign.Center,
@@ -832,7 +818,7 @@ fun DesignSystemScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(OffbalanceTheme.spacing.md)
                     ) {
-                        OffbalanceText(
+                        Text(
                             text = "Special Effects",
                             style = OffbalanceTheme.typography.h6
                         )
@@ -841,18 +827,18 @@ fun DesignSystemScreen() {
             }
 
             // Glass Card Example
-            OffbalanceCard(
+            Card(
                 style = OffbalanceCardStyle.GLASS,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    OffbalanceText(
+                    Text(
                         text = "✨ Glassmorphism Card",
                         style = OffbalanceTheme.typography.h6
                     )
-                    OffbalanceText(
+                    Text(
                         text = "Modern glass effect design",
                         style = OffbalanceTheme.typography.body1.copy(
                             color = OffbalanceTheme.colors.textSecondary

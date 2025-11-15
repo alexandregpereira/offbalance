@@ -31,7 +31,8 @@ enum class OffbalanceButtonStyle {
 }
 
 @Composable
-fun OffbalanceButton(
+fun Button(
+    text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     style: OffbalanceButtonStyle = OffbalanceButtonStyle.PRIMARY,
@@ -42,7 +43,6 @@ fun OffbalanceButton(
         vertical = OffbalanceSize.buttonPaddingVertical
     ),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable () -> Unit
 ) {
     val backgroundColor = when (style) {
         OffbalanceButtonStyle.SECONDARY -> OffbalanceColors.SurfaceMedium
@@ -83,6 +83,9 @@ fun OffbalanceButton(
             .padding(contentPadding),
         contentAlignment = Alignment.Center
     ) {
-        content()
+        Text(
+            text = text,
+            style = OffbalanceTheme.typography.button,
+        )
     }
 }

@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.TextUnit
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTheme
 
 @Composable
-fun OffbalanceText(
+fun Text(
     text: String,
     modifier: Modifier = Modifier,
     color: Color = OffbalanceTheme.colors.textPrimary,

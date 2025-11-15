@@ -7,6 +7,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -27,7 +28,7 @@ enum class OffbalanceCardStyle {
 }
 
 @Composable
-fun OffbalanceCard(
+fun Card(
     modifier: Modifier = Modifier,
     style: OffbalanceCardStyle = OffbalanceCardStyle.SECONDARY,
     shape: Shape = OffbalanceTheme.shapes.card,
@@ -36,7 +37,7 @@ fun OffbalanceCard(
     content: @Composable () -> Unit
 ) {
     val backgroundColor = when (style) {
-        OffbalanceCardStyle.SECONDARY -> OffbalanceColors.SurfaceMedium
+        OffbalanceCardStyle.SECONDARY -> OffbalanceColors.SurfaceDark
         OffbalanceCardStyle.GLASS -> Color.Transparent
         OffbalanceCardStyle.PRIMARY -> OffbalanceColors.Primary
         OffbalanceCardStyle.SUCCESS -> OffbalanceColors.Success
@@ -69,7 +70,7 @@ fun OffbalanceCard(
                 if (onClick != null) {
                     clickable(
                         interactionSource = interactionSource,
-                        indication = null,
+                        indication = ripple(),
                         onClick = onClick
                     )
                 } else this
@@ -88,7 +89,7 @@ fun FinancialCard(
     onClick: (() -> Unit)? = null,
     content: @Composable () -> Unit
 ) {
-    OffbalanceCard(
+    Card(
         modifier = modifier,
         style = style,
         onClick = onClick,

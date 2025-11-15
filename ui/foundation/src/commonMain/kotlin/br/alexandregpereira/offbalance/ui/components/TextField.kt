@@ -26,7 +26,7 @@ import br.alexandregpereira.offbalance.ui.foundation.OffbalanceSize
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTheme
 
 @Composable
-fun OffbalanceTextField(
+fun TextField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
@@ -94,7 +94,7 @@ fun MoneyTextField(
     isError: Boolean = false,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) {
-    OffbalanceTextField(
+    TextField(
         value = value,
         onValueChange = onValueChange,
         modifier = modifier,
