@@ -20,19 +20,26 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
+import br.alexandregpereira.offbalance.OffbalanceApp
+import br.alexandregpereira.offbalance.di.initKoinModules
 import br.alexandregpereira.offbalance.ui.resources.Res
 import br.alexandregpereira.offbalance.ui.resources.ic_launcher_foreground
 import org.jetbrains.compose.resources.painterResource
+import org.koin.core.context.startKoin
 
-fun main() = application {
-    Window(
-        onCloseRequest = ::exitApplication,
-        title =  "Monster Compendium",
-        icon = painterResource(Res.drawable.ic_launcher_foreground),
-        state = rememberWindowState(
-            size = DpSize(1600.dp, 900.dp)
-        ),
-    ) {
+fun main() {
+    startKoin { initKoinModules() }
 
+    application {
+        Window(
+            onCloseRequest = ::exitApplication,
+            title = "Offbalance",
+            icon = painterResource(Res.drawable.ic_launcher_foreground),
+            state = rememberWindowState(
+                size = DpSize(420.dp, 900.dp)
+            ),
+        ) {
+            OffbalanceApp()
+        }
     }
 }

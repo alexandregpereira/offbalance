@@ -1,0 +1,15 @@
+CREATE TABLE ProviderConnectionEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    providerType TEXT NOT NULL,
+    institutionId TEXT NOT NULL,
+    institutionName TEXT NOT NULL,
+    status TEXT NOT NULL,
+    createdAtEpochMillis INTEGER NOT NULL
+);
+
+selectAll:
+SELECT * FROM ProviderConnectionEntity;
+
+insert:
+INSERT OR REPLACE INTO ProviderConnectionEntity(id, providerType, institutionId, institutionName, status, createdAtEpochMillis)
+VALUES (?, ?, ?, ?, ?, ?);

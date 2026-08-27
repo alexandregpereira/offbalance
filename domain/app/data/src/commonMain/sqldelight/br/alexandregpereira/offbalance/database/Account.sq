@@ -1,0 +1,15 @@
+CREATE TABLE AccountEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    institutionId TEXT NOT NULL,
+    connectionId TEXT NOT NULL,
+    name TEXT NOT NULL,
+    type TEXT NOT NULL,
+    currency TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM AccountEntity;
+
+insert:
+INSERT OR REPLACE INTO AccountEntity(id, institutionId, connectionId, name, type, currency)
+VALUES (?, ?, ?, ?, ?, ?);

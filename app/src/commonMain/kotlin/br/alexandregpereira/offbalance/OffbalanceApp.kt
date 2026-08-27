@@ -1,53 +1,36 @@
 package br.alexandregpereira.offbalance
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import br.alexandregpereira.offbalance.ui.components.Button
-import br.alexandregpereira.offbalance.ui.components.Card
-import br.alexandregpereira.offbalance.ui.components.Scaffold
-import br.alexandregpereira.offbalance.ui.components.Text
-import br.alexandregpereira.offbalance.ui.components.VerticalSpace
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import br.alexandregpereira.offbalance.state.compose.rememberStateHolder
+import br.alexandregpereira.offbalance.ui.AppMainScreen
 import br.alexandregpereira.offbalance.ui.foundation.OffbalanceTheme
 
 @Composable
 fun OffbalanceApp() {
-    Scaffold {
-        VerticalSpace(height = 32.dp)
-        Column(
-            verticalArrangement = Arrangement.spacedBy(space = 16.dp)
-        ) {
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = {}
-            ) {
-                Column {
-                    Text(
-                        text = "Total",
-                        style = OffbalanceTheme.typography.body2,
-                    )
-                    VerticalSpace(height = 8.dp)
-                    Text(
-                        text = "R$ 10.000,00",
-                        style = OffbalanceTheme.typography.moneyLarge,
-                    )
-                }
-            }
-            Button(
-                text = "Adicionar",
-                onClick = {}
-            )
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(
-                    text = "R$ 10.000,00",
-                    style = OffbalanceTheme.typography.moneyLarge,
-                )
-            }
-        }
+    OffbalanceTheme {
+        // MainStateHolder is recreated whenever the composition is, so the selected tab has to
+        // survive outside of it. Stored by name because an enum is not saveable on every target.
+        var savedTab by rememberSaveable { mutableStateOf(AppTab.DASHBOARD.name) }
+
+        val stateHolder: MainStateHolder = rememberStateHolder()
+
+        // Seeded during composition, not from an effect: setState is synchronous, so the
+        // collectAsState below already reads the restored tab and the first frame renders the
+        // right screen. Restoring from an effect would compose the dashboard first and then
+        // throw that state holder away.
+        remember(stateHolder) { stateHolder.onTabClick(AppTab.valueOf(savedTab)) }
+
+        val state by stateHolder.state.collectAsState()
+
+        LaunchedEffect(state.selectedTab) { savedTab = state.selectedTab.name }
+
+        AppMainScreen(state = state, intent = stateHolder)
     }
 }

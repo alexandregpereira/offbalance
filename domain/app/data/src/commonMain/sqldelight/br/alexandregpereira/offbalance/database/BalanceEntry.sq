@@ -1,0 +1,21 @@
+CREATE TABLE BalanceEntryEntity (
+    accountId TEXT NOT NULL,
+    amountCents INTEGER NOT NULL,
+    currency TEXT NOT NULL,
+    timestampEpochMillis INTEGER NOT NULL,
+    PRIMARY KEY (accountId, timestampEpochMillis)
+);
+
+selectLatestByAccount:
+SELECT accountId, amountCents, currency, MAX(timestampEpochMillis) AS timestampEpochMillis
+FROM BalanceEntryEntity
+GROUP BY accountId;
+
+selectInRange:
+SELECT * FROM BalanceEntryEntity
+WHERE timestampEpochMillis >= ? AND timestampEpochMillis <= ?
+ORDER BY timestampEpochMillis ASC;
+
+insert:
+INSERT OR REPLACE INTO BalanceEntryEntity(accountId, amountCents, currency, timestampEpochMillis)
+VALUES (?, ?, ?, ?);
