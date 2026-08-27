@@ -12,6 +12,7 @@ multiplatform {
     androidMain {
         implementation(libs.androidx.core.ktx)
         implementation(libs.androidx.activity.compose)
+        implementation(libs.koin.android)
     }
 
     commonMain {
@@ -20,11 +21,20 @@ multiplatform {
         implementation(compose.runtime)
         implementation(compose.components.resources)
         implementation(compose.components.uiToolingPreview)
-        implementation(project(":ui:foundation"))
+        implementation(projects.ui.foundation)
+        implementation(projects.core.stateHolder)
+        implementation(projects.core.stateHolder.compose)
+        implementation(projects.domain.app.data)
+        implementation(projects.feature.dashboard.compose)
+        implementation(projects.feature.history.compose)
+        implementation(projects.feature.settings.compose)
+        implementation(libs.koin.core)
+        implementation(libs.koin.compose)
     }
 
     jvmMain {
         implementation(compose.desktop.currentOs)
+        implementation(libs.kotlin.coroutines.swing)
     }
 }
 
@@ -79,5 +89,10 @@ compose {
         publicResClass = false
         packageOfResClass = "br.alexandregpereira.offbalance.ui.resources"
         generateResClass = always
+    }
+    desktop {
+        application {
+            mainClass = "MainKt"
+        }
     }
 }
