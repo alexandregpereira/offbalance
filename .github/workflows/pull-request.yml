@@ -1,0 +1,17 @@
+name: Pull Request
+
+on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - '**.html'
+      - 'media/**'
+      - 'docs/**'
+
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
