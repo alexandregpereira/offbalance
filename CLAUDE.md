@@ -101,7 +101,7 @@ Dependency rules: `core/*` depends only on `core/*`; `domain:balance:core` depen
 
 ### Technology Stack
 
-Kotlin 2.1.20 (JVM toolchain 17), Compose Multiplatform 1.8.0 with **Material 2** used only
+Kotlin 2.1.20 (JVM toolchain 21), Compose Multiplatform 1.8.0 with **Material 2** used only
 internally by `ui/foundation`, Koin 4, SQLDelight 2 (`app.cash.sqldelight`), Ktor 3,
 kotlinx-serialization, kotlinx-datetime, multiplatform-settings. Dependencies live in
 `gradle/libs.versions.toml`; build conventions in `buildSrc/src/main/kotlin/TargetConfig.kt`
