@@ -16,16 +16,11 @@ interface EventListener<Event> {
 
 interface EventManager<Event> : EventDispatcher<Event>, EventListener<Event>
 
-/**
- * @param replay how many past events a new subscriber receives. Use 1 when a late subscriber
- * still needs to know that something already happened.
- */
-fun <Event> EventManager(replay: Int = 0): EventManager<Event> = DefaultEventManager(replay)
+fun <Event> EventManager(): EventManager<Event> = DefaultEventManager()
 
-private class DefaultEventManager<Event>(replay: Int) : EventManager<Event> {
+private class DefaultEventManager<Event> : EventManager<Event> {
 
     private val _events: MutableSharedFlow<Event> = MutableSharedFlow(
-        replay = replay,
         extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     )

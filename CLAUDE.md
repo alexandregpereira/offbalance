@@ -76,6 +76,12 @@ Dependency rules: `core/*` depends only on `core/*`; `domain:balance:core` depen
 - Per feature: `FooState.kt` (immutable data class plus `internal fun State.transform()`
   extensions), `FooIntent.kt` (interface plus `EmptyFooIntent` for previews), `FooStateHolder.kt`,
   `di/Module.kt`. UI: `FooScreen(state, intent, contentPadding)` plus `FooFeature()`.
+- State holders extend `StateHolder<State>` from `:core:state-holder` and are **single use**:
+  `rememberStateHolder()` calls `onCleared()` when the screen leaves the composition, which
+  cancels `scope` for good and stops the `SyncEventManager` subscription. Always register them
+  with `factory { }` — a `single { }` would be handed back dead, and `scope` throws with a
+  message saying so. State that must outlive the screen is hoisted into `rememberSaveable`
+  (see the selected tab in `OffbalanceApp`).
 - Money is always `Money(cents: Long, currency: String)` from `:core:money`, never a floating point
   type. Format with `Money.format()`. `:core:money` depends on nothing.
 - Implementations are `internal`; modules cross boundaries only through `core` interfaces.

@@ -3,7 +3,7 @@ package br.alexandregpereira.offbalance.feature.history
 import br.alexandregpereira.offbalance.balance.usecase.GetNetWorthHistory
 import br.alexandregpereira.offbalance.provider.event.SyncEvent
 import br.alexandregpereira.offbalance.provider.event.SyncEventManager
-import br.alexandregpereira.offbalance.state.UiModel
+import br.alexandregpereira.offbalance.state.StateHolder
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class HistoryStateHolder internal constructor(
     private val getNetWorthHistory: GetNetWorthHistory,
     syncEventManager: SyncEventManager,
-) : UiModel<HistoryState>(HistoryState()), HistoryIntent {
+) : StateHolder<HistoryState>(HistoryState()), HistoryIntent {
 
     init {
         syncEventManager.events

@@ -3,7 +3,6 @@ package br.alexandregpereira.offbalance.state.compose
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import br.alexandregpereira.offbalance.state.StateHolder
-import br.alexandregpereira.offbalance.state.UiModel
 import org.koin.compose.koinInject
 
 @Composable
@@ -14,7 +13,9 @@ inline fun <reified T : StateHolder<*>> rememberStateHolder(
 
     DisposableEffect(stateHolder) {
         onCreated(stateHolder)
-        onDispose { }
+        onDispose {
+            stateHolder.onCleared()
+        }
     }
 
     return stateHolder

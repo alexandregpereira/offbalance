@@ -5,7 +5,7 @@ import br.alexandregpereira.offbalance.balance.usecase.GetNetWorth
 import br.alexandregpereira.offbalance.provider.event.SyncEvent
 import br.alexandregpereira.offbalance.provider.event.SyncEventManager
 import br.alexandregpereira.offbalance.provider.usecase.SyncAccounts
-import br.alexandregpereira.offbalance.state.UiModel
+import br.alexandregpereira.offbalance.state.StateHolder
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -15,7 +15,7 @@ class DashboardStateHolder internal constructor(
     private val getAccountsWithBalance: GetAccountsWithBalance,
     private val syncAccounts: SyncAccounts,
     private val syncEventManager: SyncEventManager,
-) : UiModel<DashboardState>(DashboardState()), DashboardIntent {
+) : StateHolder<DashboardState>(DashboardState()), DashboardIntent {
 
     init {
         syncEventManager.events

@@ -8,7 +8,7 @@ import br.alexandregpereira.offbalance.provider.usecase.GetProviderConnections
 import br.alexandregpereira.offbalance.provider.usecase.SyncAccounts
 import br.alexandregpereira.offbalance.settings.usecase.GetSettings
 import br.alexandregpereira.offbalance.settings.usecase.SelectProvider
-import br.alexandregpereira.offbalance.state.UiModel
+import br.alexandregpereira.offbalance.state.StateHolder
 import kotlinx.coroutines.launch
 
 class SettingsStateHolder internal constructor(
@@ -18,7 +18,7 @@ class SettingsStateHolder internal constructor(
     private val syncAccounts: SyncAccounts,
     private val providerRegistry: FinanceProviderRegistry,
     private val syncEventManager: SyncEventManager,
-) : UiModel<SettingsState>(SettingsState()), SettingsIntent {
+) : StateHolder<SettingsState>(SettingsState()), SettingsIntent {
 
     init {
         load()

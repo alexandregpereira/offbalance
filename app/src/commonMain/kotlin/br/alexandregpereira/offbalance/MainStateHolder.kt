@@ -4,7 +4,7 @@ import br.alexandregpereira.offbalance.provider.event.SyncEvent
 import br.alexandregpereira.offbalance.provider.event.SyncEventManager
 import br.alexandregpereira.offbalance.provider.usecase.GetProviderConnections
 import br.alexandregpereira.offbalance.provider.usecase.SyncAccounts
-import br.alexandregpereira.offbalance.state.UiModel
+import br.alexandregpereira.offbalance.state.StateHolder
 import kotlinx.coroutines.launch
 
 interface MainIntent {
@@ -16,7 +16,7 @@ class MainStateHolder internal constructor(
     private val getProviderConnections: GetProviderConnections,
     private val syncAccounts: SyncAccounts,
     private val syncEventManager: SyncEventManager,
-) : UiModel<MainState>(MainState()), MainIntent {
+) : StateHolder<MainState>(MainState()), MainIntent {
 
     init {
         syncOnFirstLaunch()

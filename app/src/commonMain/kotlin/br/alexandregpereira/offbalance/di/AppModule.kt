@@ -18,7 +18,7 @@ private val featureModules = listOf(
 )
 
 private val appModule = module {
-    single {
+    factory {
         MainStateHolder(
             getProviderConnections = get(),
             syncAccounts = get(),
